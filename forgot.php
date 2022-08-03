@@ -1,15 +1,14 @@
 <?php
     include 'header.php';
     ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>forgot password</title>
-</head>
-<body>
+<header>
+        <nav class="navbar navbar-info " style="background-color: #F4FBFF; height: 70px; ">
+
+            <div class="container-fluid ">
+                <img src="assets/images/logo.png" height="40px" style="margin-left: 50px;">
+            </div>
+        </nav>
+    </header>
     <div class="container p-5 my-5 border mb-4">
         <div style="margin-top:5px;">
         </div>
@@ -43,5 +42,3 @@
     <?php
     include 'footer.php';
     ?>
-</body>
-</html>

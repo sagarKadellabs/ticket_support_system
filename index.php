@@ -1,18 +1,14 @@
 <?php
 include 'header.php';
 ?>
-<!DOCTYPE html>
+<header>
+        <nav class="navbar navbar-info " style="background-color: #F4FBFF; height: 70px; ">
 
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
-</head>
-
-<body>
+            <div class="container-fluid ">
+                <img src="assets/images/logo.png" height="40px" style="margin-left: 50px;">
+            </div>
+        </nav>
+    </header>
     <div class="container p-5 my-5 border mb-4">
         <div>
             <h2>Welcome to Kadel Labs</h2>
@@ -52,9 +48,8 @@ include 'header.php';
     <?php
     include 'footer.php';
     ?>
-<script>
-
-const togglePassword = document
+    <script>
+        const togglePassword = document
     .querySelector('#togglePassword');
 
 const password = document.querySelector('#password');
@@ -73,25 +68,10 @@ togglePassword.addEventListener('click', () => {
     this.classList.toggle('bi-eye');
 });
 
-</script>
-
-
-<!-- Optional JavaScript; choose one of the two! -->
-
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-crossorigin="anonymous"></script>
-
-<!-- Code for removing string from 1st position in a text box !-->
-<script type="text/javascript">
 $("#uname").on("keypress", function (e) {
     if ((e.which === 32 && !this.value.length) || (e.which >= 33 && e.which <= 64) || (e.which >= 123 && e.which <= 126) || (e.which >= 91 && e.which <= 96))
         e.preventDefault();
 });
 
+        </script>
 
-</script>
-</body>
-
-</html>
