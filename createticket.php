@@ -81,9 +81,10 @@ include 'sidebar.php';
             </div>
 
 
-            <button type="submit" class="btn btn-primary ml-4" style="margin-top: 10px;">Create</button>
+            <button type="submit" class="btn btn-primary ml-4"  style="margin-top: 10px;">Create</button>
 
-            <a href="#" style="font: noto sans; color:#044BA9; margin-left:50px;"><u>Discard </u></a>
+            <button type="reset" class="btn btn-danger ml-4"  style="margin-top: 10px;">Discard</button>
+            <!-- <a href="#" style="font: noto sans; color:#044BA9; margin-left:50px;"><u>Discard </u></a> -->
 
         </form>
         <script>
