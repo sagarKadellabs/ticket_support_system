@@ -192,3 +192,118 @@
         width: 450px;
 
     }
+    .btn {
+
+
+
+        width: 200px;
+    
+        height: 40px;
+    
+        background-color:#044BA9;
+    
+        color: white;
+    
+        border-radius: 5px;
+    
+    }
+    
+    
+    
+    .btn1 {
+    
+       
+    
+        box-sizing: border-box;
+    
+        margin-left:400px;
+    
+        width: 106px;
+    
+        height: 40px;
+    
+        left: 1180px;
+    
+        top: 225px;
+    
+       
+    
+        background: rgba(4, 75, 169, 0.25);
+    
+        border: 1px solid #044BA9;
+    
+        border-radius: 5px;
+    
+       
+    
+    }
+    .tbl {
+    
+        margin-top: 15px;
+    
+        padding: 20px;
+    
+        width: 95%;
+    
+        border: #F4FBFF;
+    
+        border-collapse: separate;
+    
+        border-spacing: 0 0.5em;
+    
+    
+    
+    }
+    
+    
+    
+    .t_body {
+    
+        box-sizing: border-box;
+    
+        background-color: #F4FBFF;
+    
+        padding: 20px;
+    
+    }
+    
+    .box{
+    
+        width:500px;
+    
+        height:50px;
+    
+        background-color: #F4FBFF;
+    
+        border-radius: 10px;
+    
+        display:flex;
+    
+        padding:20px;
+    
+    }
+    .box >i{
+    
+        font-size:20px;
+    
+        color: #777;
+    
+    }
+    
+    .box >input{
+    
+        flex: 1;
+    
+        height:20px;
+    
+        border:none;
+    
+        outline:none;
+    
+        font-size:18px;
+    
+        padding-left:10px;
+    
+        background-color:#F4FBFF;
+    
+    }  

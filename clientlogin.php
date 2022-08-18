@@ -16,7 +16,7 @@ include 'header.php';
             <h2>Welcome to Kadel Labs</h2>
             <h3>Login</h3>
         </div>
-        <form   action="loginsubmit.php" method="post">
+        <form   action="clientdb.php" method="post">
             <div class="mb-4 mt-3 user" style="text-align: left; ">
 
                 <label for="uname" class="form-label">Username:</label>
@@ -42,7 +42,7 @@ include 'header.php';
 
             </div>
 
-            <button type="submit"  name="login"class="btn btn-primary">LOGIN</button>
+            <button type="submit"  name="clientlogin"class="btn btn-primary">LOGIN</button>
 
         </form>
 
@@ -76,4 +76,3 @@ $("#uname").on("keypress", function (e) {
 });
 
         </script>
-

@@ -1,3 +1,12 @@
+<?php
+
+ include 'connection.php'; 
+ $q = "select * from users ";
+
+ $query = mysqli_query($con,$q);
+
+ 
+ ?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +34,7 @@
                         <span class="nav_name">Dashboard</span> </a>  <a href="#" class="nav_link"><i
                                 class='bx bx-user nav_icon'></i> <span class="nav_name">Profile</span> </a>
                 </div>
-                <a href="#" class="nav_link"> <i class='bx bx-log-in nav_icon' style="color:red;"></i> <span
+                <a href="logoutsubmit.php" class="nav_link"> <i class='bx bx-log-in nav_icon' style="color:red;"></i> <span
                         class="nav_name">SignOut</span> </a>
             </div>
         </nav>
