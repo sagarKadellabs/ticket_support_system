@@ -1,9 +1,14 @@
 <?php
+if(!isset($_SESSION['users_name']))
+{
+    header("location: http://localhost/ticket_support_system/index.php");
+}
 include 'header.php';
 include 'sidebar.php';
 ?>
 <div class="row  mt-4 ">
-    <span><b>Welcome Admin,</b></span>
+    <span><b>Welcome Client,</b></span>
+
     <div class="col  h2"><b>Dashboard</b></div>
     <div class="col ">
         <div class="box">
@@ -65,10 +70,7 @@ include 'sidebar.php';
     </div>
 </div>
 </div>
-
-
 <table class=" table tbl">
-
     <thead style="color:#777777;">
         <tr>
             <th scope="col">TICKET #</th>
@@ -87,30 +89,19 @@ include 'sidebar.php';
             <td>Sales Executive</td>
             <td>open</td>
             <td>
-
                 <div class="dropdown dropstart text-end dot">
-
                     <button type="button" class="dot" data-bs-toggle="dropdown">
-
                         <i class="bx bx-dots-vertical-rounded "></i>
-
                     </button>
-
                     <ul class="dropdown-menu  drop">
-
                         <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
                                     class=' bx bx-show'></i></a></li>
-
                         <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
                                     class='bx bx-pencil'></i></a></li>
-
                         <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
                                     class='  bx bx-transfer'></i></a></li>
-
                     </ul>
-
                 </div>
-
             </td>
         </tr>
         <tr>
@@ -120,32 +111,21 @@ include 'sidebar.php';
             <td>Sales Executive</td>
             <td>open</td>
             <td>
-
                 <div class="dropdown dropstart text-end dot">
-
                     <button type="button" class="dot" data-bs-toggle="dropdown">
-
                         <i class="bx bx-dots-vertical-rounded "></i>
-
                     </button>
-
                     <ul class="dropdown-menu   drop_list">
-
                         <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
                                     class=' bx bx-show'></i></a></li>
-
                         <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
                                     class='bx bx-pencil'></i></a></li>
-
                         <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
                                     class='  bx bx-transfer'></i></a></li>
-
                     </ul>
-
                 </div>
-
             </td>
-
+            <div class=""></div>
         </tr>
         <tr>
             <th scope="row">#2345</th>
@@ -285,7 +265,3 @@ include 'sidebar.php';
 
     </tbody>
 </table>
-
-</body>
-
-</html>
