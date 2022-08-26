@@ -1,10 +1,6 @@
 <?php
-if(!isset($_SESSION['users_name']))
-{
-    header("location: http://localhost/ticket_support_system/index.php");
-}
 include 'header.php';
-include 'sidebar.php';
+include 'sidebar_user.php';
 ?>
 <div class="row  mt-4 ">
     <span><b>Welcome Client,</b></span>
@@ -20,6 +16,9 @@ include 'sidebar.php';
     <div class="col  ">
         <button type="button" class="btn "><i class=' bx bx-plus-circle'></i>Add New User</button>
     </div>
+    <?php
+    echo  " Welcome ".$_SESSION['user_name'];
+    ?>
 </div> <br>
 
 <!-- D Dashboard end -->

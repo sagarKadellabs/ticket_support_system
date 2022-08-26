@@ -1,15 +1,18 @@
 <?php
-$con = mysqli_connect('localhost','root');
-mysqli_select_db($con,'ticket_management_system');
+session_start();
+include 'connection.php';
 if(isset($_POST['create'])){
- $TicketID = $_POST['Ticket ID'];
- $issue = $_POST['issue'];
- $FullName = $_POST['FullName'];
+    // echo "<pre>";
+ //($_SESSION['user_id']);
+ //die;
+ 
+ $user_id = $_POST['user_id'];
  $department = $_POST['department'];
+ $issue = $_POST['issue'];
  $message = $_POST['message'];
  //$file = $_POST['file'];
- $sql = " INSERT INTO `tickets`(`tickets_id`,`issue_type`,`user_id`,`department_id`,`message`) VALUES ('$TicketID','$issue','$FullName','$department','$message')";
+ $sql = " INSERT INTO `tickets`(`user_id`,`department_id`,`issue_type`,`message`) VALUES (' $user_id','$department','$issue','$message')";
  $query = mysqli_query($con,$sql);
 }
- header('location:ticketdetail.php');
+ header('location:ticket_detail.php');
 ?>
