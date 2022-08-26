@@ -10,12 +10,8 @@
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-
-
-
         <div class="header_img">
             <img src="assets/images/nav_image.png" alt="Avatar Logo">
-
         </div>
     </header>
     <div class="l-navbar" id="nav-bar" style="background-color: #F4FBFF">
@@ -26,11 +22,8 @@
                     </span> </a>
                 <div class="nav_list"> <a href="dashboard_client.php" class="nav_link active"> <i
                             class=' bx bxs-dashboard nav_icon'></i>
-                        <span class="nav_name">Dashboard</span> </a> <a href="manage_user.php" class="nav_link"> <i
-                            class="iconify nav_icon" data-icon="carbon:user-multiple"></i> Manage Users</span></a> <a
-                        href="manage_client.php" class="nav_link"> <i class="iconify nav_icon"
-                            data-icon="carbon:user-multiple"></i> Manage Client</span></a> <a href="#"
-                        class="nav_link"><i class='bx bx-user nav_icon'></i> <span class="nav_name">Profile</span> </a>
+                        <span class="nav_name">Dashboard</span> </a> <a href="#" class="nav_link"><i
+                            class='bx bx-user nav_icon'></i> <span class="nav_name">Profile</span> </a>
                 </div>
                 <a href="logout_submit.php" class="nav_link"> <i class='bx bx-log-in nav_icon' style="color:red;"></i>
                     <span class="nav_name">SignOut</span> </a>

@@ -1,6 +1,5 @@
 <?php
-$con = mysqli_connect('localhost','root');
-mysqli_select_db($con,'ticket_management_system');
+include 'connection.php';
 if(isset($_POST['create']))
 {
  $users_name = $_POST['users_name'];
@@ -12,19 +11,16 @@ if(isset($_POST['create']))
  $query=mysqli_query($con,"select * from `users` where emails = '$emails'"); 
  if(mysqli_num_rows($query)>0)
  {
-    
-   // echo"<script>window.location='http://localhost/ticket_support_system/create_client.php'</script>";
-   // echo"email is already exist";
-    echo"<script> window.location='http://localhost/ticket_support_system/create_client.php'; alert('Email is already exist')</script>";
- $sql = " INSERT INTO `users`(`users_name`,`emails`,`password`,`postion_id`,`role_id`,`department_id`) VALUES ('$users_name','$emails','$password','$pos','$role','$dep')";
- $query = mysqli_query($con,$sql);
- }
- else
+   
+    echo"<script> window.location='create_end_user.php'; alert('Email is already exist')</script>";
+ }   else
  {
-    header('location:dashboard_client.php');
- }
- $sql = " INSERT INTO `users`(`users_name`,`emails`,`password`,`postion_id`,`role_id`,`department_id`) VALUES ('$users_name','$emails','$password','$pos','$role','$dep')";
+    $sql = " INSERT INTO `users`(`users_name`,`emails`,`password`,`postion_id`,`role_id`,`department_id`) VALUES ('$users_name','$emails','$password','$pos','$role','$dep')";
  $query = mysqli_query($con,$sql);
+    header('location:dashboard.php');
+ }
 }
+ 
+
  
 ?>

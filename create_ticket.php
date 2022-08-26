@@ -1,16 +1,25 @@
 <?php
 include 'header.php';
-include 'sidebar.php';
+include 'sidebar_user.php';
 include 'connection.php';
 ?>
 <title>create ticket</title>
-<form action="create_ticket_submit.php" method="post" style="margin-top:130px;">
-    <h2>Create Ticket</h2>
+<form action="create_ticket_submit.php" method="post">
+
+    <div class="row">
+        <div class="col">
+            <h2>Create Ticket</h2>
+        </div>
+        <div class="col-1">
+            <?php
+    echo  " Welcome ".$_SESSION['user_name'];
+    ?>
+        </div>
+    </div>
     <div class="row">
         <div class="col p-4">
             <label for="TicketID" class="form-label">Ticket ID</label>
-            <input type="text" class="form-control form-control-lg form-boxes" placeholder="45678" name="TicketID"
-                required>
+            <input type="text" class="form-control form-control-lg form-boxes" placeholder="45678" name="TicketID">
         </div>
         <?php
                      $sql= "SELECT * from issue ";
@@ -39,17 +48,17 @@ include 'connection.php';
     <div class="row">
         <div class="col p-4">
 
-            <label for="FullName" class="form-label">Full Name*</label>
-            <input type="text" class="form-control form-control-lg form-boxes" value=<?php 
-            echo $_SESSION['user_name'];
-            ?> name="FullName" required>
+            <label for="user_id" class="form-label">Full Name*</label>
+            <input type="text" name="user_id" class="form-control form-control-lg form-boxes" value=<?php 
+            echo $_SESSION['user_id'];
+            ?>>
         </div>
 
         <div class="col p-4">
             <label for="department" class="form-label">Department*</label>
-            <input type="text" class="form-control form-control-lg form-boxes" value=<?php 
+            <input type="text" name="department" class="form-control form-control-lg form-boxes" value=<?php 
             echo $_SESSION['department_id'];
-            ?> name="department" required>
+            ?>>
         </div>
     </div>
     <?php
@@ -81,6 +90,7 @@ include 'connection.php';
     <button type="submit" class="btn btn-primary ml-4" name="create" style="margin-top: 10px;">Create</button>
     <button type="reset" class="btn btn-danger ml-4" style="margin-top: 10px;">Discard</button>
 </form>
+
 <script>
 $(document).ready(function() {
     $('#falseinput').click(function() {

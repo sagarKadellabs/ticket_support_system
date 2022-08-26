@@ -1,10 +1,11 @@
 <?php
-if($_SESSION['is_user_login']='no')
-{
-    echo"";
-//header("location: http://localhost/ticket_support_system/index.php");
-}
- ?>
+error_reporting(E_ERROR | E_PARSE);
+session_start();
+ if($_SESSION['is_user_login'] =='no')
+ {
+    header("location:index.php");
+ }
+?>
 <!DOCTYPE html>
 <html lang="en">
 

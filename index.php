@@ -126,7 +126,7 @@ if(isset($_POST['login']))
     $_SESSION['department_id'] = $row["department_id"];
     
     if($row["role_id"]==1)
-    {  
+    {   
       header("location:dashboard.php");
     }
       elseif($row["role_id"]==2)

@@ -12,9 +12,13 @@ include 'sidebar.php';
         </div>
     </div>
     &emsp; &emsp; &emsp; &emsp; &emsp;
+
     <div class="col  ">
         <button type="button" class="btn "><i class=' bx bx-plus-circle'></i>Add New User</button>
     </div>
+    <?php
+    echo  " Welcome ".$_SESSION['user_name'];
+    ?>
 </div> <br>
 
 <!-- D Dashboard end -->
