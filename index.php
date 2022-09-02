@@ -120,10 +120,16 @@ if(isset($_POST['login']))
   { 
     unset($_SESSION['is_user_login']);
     $_SESSION['is_user_login']='yes'; 
-
     $_SESSION['user_name'] = $uname;
-    $_SESSION['user_id']=$row["id"];
+    $_SESSION['user_id']= $row["id"];
     $_SESSION['department_id'] = $row["department_id"];
+
+    $department = mysqli_query($con,"select department_name from departments where department_id = ".$row['department_id']);
+    if(mysqli_num_rows($department) > 0)
+    {
+        $dept_name = mysqli_fetch_assoc($department);
+        $_SESSION['department_name'] = $dept_name['department_name'];
+    }
     
     if($row["role_id"]==1)
     {   

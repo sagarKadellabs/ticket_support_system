@@ -20,8 +20,7 @@
                     <span class="nav_logo-name m-0">
                         <img src="assets/images/logoi.png" height="25px;">
                     </span> </a>
-                <div class="nav_list"> <a href="dashboard_client.php" class="nav_link active"> <i
-                            class=' bx bxs-dashboard nav_icon'></i>
+                <div class="nav_list"> <a href="#" class="nav_link active"> <i class=' bx bxs-dashboard nav_icon'></i>
                         <span class="nav_name">Dashboard</span> </a> <a href="#" class="nav_link"><i
                             class='bx bx-user nav_icon'></i> <span class="nav_name">Profile</span> </a>
                 </div>

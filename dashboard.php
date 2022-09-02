@@ -1,294 +1,166 @@
 <?php
 include 'header.php';
 include 'sidebar.php';
+include 'connection.php';
 ?>
-<div class="row  mt-4 ">
-    <span><b>Welcome Admin,</b></span>
-    <div class="col  h2"><b>Dashboard</b></div>
-    <div class="col ">
-        <div class="box">
-            <i class='  bx bx-search-alt-2'></i>
-            <input type="search" id="form1" class="form-control" placeholder="Search by ID, Department" />
-        </div>
-    </div>
-    &emsp; &emsp; &emsp; &emsp; &emsp;
+<title>Dashboard!!</title>
 
-    <div class="col  ">
-        <button type="button" class="btn "><i class=' bx bx-plus-circle'></i>Add New User</button>
-    </div>
-    <?php
+<body id="body-pd">
+
+
+    <div class="row ">
+
+
+        <div class="col">
+
+            <!-- D Dashboard start -->
+            <div class="row  mt-4 ">
+                <span><b>Welcome Admin,</b></span>
+                <div class="col  h2"><b>Dashboard</b></div>
+                <div class="col ">
+                    <div class="box">
+                        <i class='  bx bx-search-alt-2'></i>
+                        <input id="myInput" type="text" placeholder="Search..">
+                    </div>
+                </div>
+                &emsp; &emsp; &emsp; &emsp; &emsp;
+                <div class="col  ">
+                    <button type="button" class="btn btn11"><i class=' bx bx-plus-circle'></i>Add New User</button>
+                </div>
+                <?php
     echo  " Welcome ".$_SESSION['user_name'];
     ?>
-</div> <br>
+            </div> <br>
 
-<!-- D Dashboard end -->
+            <!-- D Dashboard end -->
 
-<!-- D checkbox row start -->
-<div class="row  mt-2">
-    <div class="col pt-2">
+            <!-- D checkbox row start -->
+            <div class="row  mt-2">
+                <div class="col pt-2">
 
-        <div class="form-check form-check-inline">
-            <label class="form-check-label " for="flexCheckChecked">
-                ALL
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label " for="flexCheckChecked">
+                            ALL
+                        </label>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
 
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            OPEN
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            HOLD
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            CLOSED
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            IN PROGRASS
+                        </label>
+                    </div>
+
+                </div>
+                <div class="col  ">
+                    <button type="button" class=" btn1 "><i class=' bx bx-slider'></i> Filter</button>
+                </div>
+            </div>
         </div>
 
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                OPEN
-            </label>
-        </div>
-
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                HOLD
-            </label>
-        </div>
 
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                CLOSED
-            </label>
-        </div>
+        <table class=" table tbl">
 
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                IN PROGRASS
-            </label>
-        </div>
+            <thead style="color:#777777;">
+                <tr>
+                    <th scope="col">TICKET #</th>
+                    <th scope="col">DEPARTMENT</th>
+                    <th scope="col">ASSIGNIEE NAME</th>
+                    <th scope="col">ASSIGNIEE DEPARTMENT</th>
+                    <th scope="col">STATUS</th>
+                    <th scope="col">ACTION</th>
+                </tr>
+            </thead>
 
-    </div>
-    <div class="col  ">
-        <button type="button" class=" btn1 "><i class=' bx bx-slider'></i> Filter</button>
-    </div>
-</div>
-</div>
+            <tbody class="t_body" id="table_body">
 
+                <?php
 
-<table class=" table tbl">
+$query= "SELECT *
 
-    <thead style="color:#777777;">
-        <tr>
-            <th scope="col">TICKET #</th>
-            <th scope="col">DEPARTMENT</th>
-            <th scope="col">ASSIGNIEE NAME</th>
-            <th scope="col">ASSIGNIEE DEPARTMENT</th>
-            <th scope="col">STATUS</th>
-            <th scope="col">ACTION</th>
-        </tr>
-    </thead>
-    <tbody class="t_body">
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
+FROM tickets T JOIN users U ON (T.user_id = U.id )
 
-                <div class="dropdown dropstart text-end dot">
+JOIN departments D ON (T.department_id = D.department_id ) JOIN issue I ON (T.issue_type = I.issue_id) ORDER BY ticket_id";
 
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
+$query_run = mysqli_query($con ,$query);
 
-                        <i class="bx bx-dots-vertical-rounded "></i>
+if(mysqli_num_rows( $query_run)> 0)
 
-                    </button>
+{
 
-                    <ul class="dropdown-menu  drop">
+    while ($row = mysqli_fetch_assoc($query_run))
 
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
+    {
+        ?>
 
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
+                <tr>
 
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
+                    <td><?php echo $row['ticket_id']; ?></td>
 
-                    </ul>
+                    <td><?php echo $row['issue_name']; ?></td>
 
-                </div>
+                    <td><?php echo $row['users_name']; ?></td>
 
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
+                    <td><?php echo $row['department_name'];  ?></td>
 
-                <div class="dropdown dropstart text-end dot">
+                    <td><?php echo $row['status']; ?></td>
 
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
 
-                        <i class="bx bx-dots-vertical-rounded "></i>
+                    <td>
+                        <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"> <i
+                                class=' bx bx-show' style="color:blue; font-size:20px; margin-left:5px;"></i>view</a>
+                        &nbsp;
+                        <a class=" " href="#" style="color:gray;"><i class=' bx bx-edit '
+                                style=" color:gray; font-size:20px; margin-left:5px;"></i>edit</a> &nbsp;
+                        <a class=" " href="#" style="color:#7DBA00;"><i class=' bx bx-transfer '
+                                style="color:#7DBA00; font-size:20px; margin-left:5px;"></i>transfer</a>
 
-                    </button>
+                    </td>
+                </tr>
 
-                    <ul class="dropdown-menu   drop_list">
+                <?php
+                        }
 
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
+                    }
 
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
+                    else
+                    {
 
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
+                
+                ?>
+                <tr>
+                    <td colspan="6"> No record found</td>
+                </tr>
+                <?php
+                    }
+                ?>
 
-                    </ul>
+            </tbody>
+        </table>
 
-                </div>
-
-            </td>
-
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
-
-                <div class="dropdown dropstart text-end dot">
-
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
-
-                        <i class="bx bx-dots-vertical-rounded "></i>
-
-                    </button>
-
-                    <ul class="dropdown-menu   drop_list">
-
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
-
-                    </ul>
-
-                </div>
-
-            </td>
-
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
-
-                <div class="dropdown dropstart text-end dot">
-
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
-
-                        <i class="bx bx-dots-vertical-rounded "></i>
-
-                    </button>
-
-                    <ul class="dropdown-menu   drop_list">
-
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
-
-                    </ul>
-
-                </div>
-
-            </td>
-
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
-
-                <div class="dropdown dropstart text-end dot">
-
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
-
-                        <i class="bx bx-dots-vertical-rounded "></i>
-
-                    </button>
-
-                    <ul class="dropdown-menu   drop_list">
-
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
-
-                    </ul>
-
-                </div>
-
-            </td>
-
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
-
-                <div class="dropdown dropstart text-end dot">
-
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
-
-                        <i class="bx bx-dots-vertical-rounded "></i>
-
-                    </button>
-
-                    <ul class="dropdown-menu   drop_list">
-
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
-
-                    </ul>
-
-                </div>
-
-            </td>
-        </tr>
-
-    </tbody>
-</table>
 
 </body>
 

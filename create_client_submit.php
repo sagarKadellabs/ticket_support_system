@@ -18,9 +18,7 @@ if(isset($_POST['create']))
    $sql = " INSERT INTO `users`(`users_name`,`emails`,`password`,`postion_id`,`role_id`,`department_id`) VALUES ('$users_name','$emails','$password','$pos','$role','$dep')";
  $query = mysqli_query($con,$sql) ;
 
-  header('location:dashboard_client.php');
+  header('location:dashboard.php');
    }
  }
-
-
 ?>

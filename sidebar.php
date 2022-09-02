@@ -4,7 +4,7 @@
  ?>
 
 <head>
-    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <!-- <link rel="stylesheet" href="assets/css/sidebar.css"> -->
 </head>
 
 <body id="body-pd">
@@ -24,7 +24,7 @@
                     <span class="nav_logo-name m-0">
                         <img src="assets/images/logoi.png" height="25px;">
                     </span> </a>
-                <div class="nav_list"> <a href="dashboard_client.php" class="nav_link active"> <i
+                <div class="nav_list"> <a href="dashboard.php" class="nav_link active"> <i
                             class=' bx bxs-dashboard nav_icon'></i>
                         <span class="nav_name">Dashboard</span> </a> <a href="manage_user.php" class="nav_link"> <i
                             class="iconify nav_icon" data-icon="carbon:user-multiple"></i> Manage Users</span></a> <a
