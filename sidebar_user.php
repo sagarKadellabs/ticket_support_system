@@ -10,10 +10,46 @@
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <?php
+    echo str_repeat('&emsp;',80) .$_SESSION['user_name'];
+    ?>
         <div class="header_img">
             <img src="assets/images/nav_image.png" alt="Avatar Logo">
         </div>
     </header>
+    <?php
+
+$sql = "SELECT * from users ";
+
+$result = mysqli_query($con,$sql);
+
+ if(mysqli_num_rows($result)>0){
+
+    if($row["role_id"]==2){
+
+?>
+    <div class="l-navbar" id="nav-bar" style="background-color: #F4FBFF">
+        <nav class="nav">
+            <div> <a href="#" class="nav_logo"> <img src="assets/images/KL.png" width="22px">
+                    <span class="nav_logo-name m-0">
+                        <img src="assets/images/logoi.png" height="25px;">
+                    </span> </a>
+                <div class="nav_list"> <a href="dashboard_client.php" class="nav_link active"> <i
+                            class=' bx bxs-dashboard nav_icon'></i>
+                        <span class="nav_name">Dashboard</span> </a> <a href="#" class="nav_link"><i
+                            class='bx bx-user nav_icon'></i> <span class="nav_name">Profile</span> </a>
+                </div>
+                <a href="logout_submit.php" class="nav_link"> <i class='bx bx-log-in nav_icon' style="color:red;"></i>
+                    <span class="nav_name">SignOut</span> </a>
+            </div>
+        </nav>
+    </div>
+    <?php
+    }
+    else
+    {
+    ?>
+
     <div class="l-navbar" id="nav-bar" style="background-color: #F4FBFF">
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <img src="assets/images/KL.png" width="22px">
@@ -29,6 +65,12 @@
             </div>
         </nav>
     </div>
+    <?php
+    }
+}
+?>
+
+
     <script>
     document.addEventListener("DOMContentLoaded", function(event) {
 

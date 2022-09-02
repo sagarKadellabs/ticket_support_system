@@ -90,7 +90,7 @@ include 'connection.php';
                 <p>Assignee: <i class="bi bi-arrow-left-right" style="padding-left: 250px; "></i><i class="bi bi-pencil"
                         style="padding-left: 20px;"></i> </p>
 
-                <h5><?php echo $data['users_name']; ?></h5>
+                <h5><?php echo $data['user_name']; ?></h5>
                 <p>Created By :</p>
                 <h5>Johnny Doe</h5>
             </div>

@@ -23,13 +23,8 @@ include 'connection.php';
                         <input id="myInput" type="text" placeholder="Search..">
                     </div>
                 </div>
-                &emsp; &emsp; &emsp; &emsp; &emsp;
-                <div class="col  ">
-                    <button type="button" class="btn btn11"><i class=' bx bx-plus-circle'></i>Add New User</button>
-                </div>
-                <?php
-    echo  " Welcome ".$_SESSION['user_name'];
-    ?>
+
+
             </div> <br>
 
             <!-- D Dashboard end -->

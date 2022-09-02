@@ -11,9 +11,7 @@ include 'connection.php';
             <h2>Create Ticket</h2>
         </div>
         <div class="col-1">
-            <?php
-    echo  " Welcome ".$_SESSION['user_name'];
-    ?>
+
         </div>
     </div>
     <div class="row">
@@ -29,12 +27,29 @@ include 'connection.php';
             <input type="hidden" name="user_id" class="form-control form-control-lg form-boxes" value=<?php 
             echo $_SESSION['user_id'];
             ?>>
-            <input type="text" name="department" class="form-control form-control-lg form-boxes" value=<?php 
+            <input type="text" name="user" class="form-control form-control-lg form-boxes" value=<?php 
             echo $_SESSION['user_name'];
-            ?>>
+            ?> readonly>
 
 
         </div>
+        <div class="col p-4">
+
+            <label for="department" class="form-label">Department*</label>
+
+            <input type="text" name="department" class="form-control form-control-lg form-boxes" value=<?php 
+echo $_SESSION['department_name'];
+?> readonly>
+            <input type="hidden" name="department" class="form-control form-control-lg form-boxes" value=<?php 
+echo $_SESSION['department_id'];
+?>>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+
         <?php
                      $sql= "SELECT * from issue ";
                      $result= mysqli_query($con,$sql);
@@ -59,21 +74,6 @@ include 'connection.php';
         <?php
             }
             ?>
-    </div>
-
-    <div class="row">
-        <div class="col p-4">
-
-            <label for="department" class="form-label">Department*</label>
-
-            <input type="text" name="department" class="form-control form-control-lg form-boxes" value=<?php 
-            echo $_SESSION['department_name'];
-            ?>>
-            <input type="hidden" name="department" class="form-control form-control-lg form-boxes" value=<?php 
-            echo $_SESSION['department_id'];
-            ?>>
-
-        </div>
 
         <div class="col p-4 ">
             <label for="message" class="form-label">Message*</label>

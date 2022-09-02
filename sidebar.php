@@ -10,8 +10,9 @@
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-
-
+        <?php
+    echo str_repeat('&emsp;',80) .$_SESSION['user_name'];
+    ?>
 
         <div class="header_img">
             <img src="assets/images/nav_image.png" alt="Avatar Logo">
