@@ -20,7 +20,7 @@
                 <div class="col ">
                     <div class="box">
                         <i class='  bx bx-search-alt-2'></i>
-                        <input type="search" id="form1" class="form-control" placeholder="Search by ID, Department" />
+                        <input id="myInput" type="text" placeholder="Search..">
                     </div>
                 </div>
                 &emsp; &emsp; &emsp; &emsp; &emsp;
@@ -45,7 +45,7 @@
                         <th scope="col">ACTION</th>
                     </tr>
                 </thead>
-                <tbody class="t_body">
+                <tbody class="t_body" id="table_body">
                     <tr>
                         <th scope="row">1</th>
                         <td>John Deo</td>

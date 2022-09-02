@@ -92,7 +92,31 @@ include 'sidebar.php';
      }
      }
    ?>
+    </div><br>
+    <label for="text" class="form-label">Access to Ticket*</label><br>
+    <div class="form-check form-check-inline">
+
+        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+
+        <label class="form-check-label" for="inlineRadio1">View</label>
+
     </div>
+
+    <div class="form-check form-check-inline">
+
+        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+
+        <label class="form-check-label" for="inlineRadio2">Edit</label>
+
+    </div>
+
+    <div class="form-check form-check-inline">
+
+        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+
+        <label class="form-check-label" for="inlineRadio2">Transfer</label>
+
+    </div> <br><br>
     <button type="submit" name="create" class="btn"
         style="background-color: #044BA9; color:white; width:100px;">Create</button>
     <a href="#" style="font: Noto Sans; color:#044BA9"><u>Discard</u></a>
