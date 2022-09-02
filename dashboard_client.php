@@ -12,13 +12,6 @@ include 'sidebar_user.php';
             <input id="myInput" type="text" placeholder="Search..">
         </div>
     </div>
-    &emsp; &emsp; &emsp; &emsp; &emsp;
-    <div class="col  ">
-        <button type="button" class="btn "><i class=' bx bx-plus-circle'></i>Add New User</button>
-    </div>
-    <?php
-    echo  " Welcome ".$_SESSION['user_name'];
-    ?>
 </div> <br>
 
 <!-- D Dashboard end -->
@@ -81,186 +74,66 @@ include 'sidebar_user.php';
         </tr>
     </thead>
     <tbody class="t_body" id="table_body">
+        <?php
+
+$query= "SELECT *
+
+FROM tickets T JOIN users U ON (T.user_id = U.id )
+
+JOIN departments D ON (T.department_id = D.department_id ) JOIN issue I ON (T.issue_type = I.issue_id) ORDER BY ticket_id";
+
+$query_run = mysqli_query($con ,$query);
+
+if(mysqli_num_rows( $query_run)> 0)
+
+{
+
+    while ($row = mysqli_fetch_assoc($query_run))
+
+    {
+        ?>
+
         <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
+
+            <td><?php echo $row['ticket_id']; ?></td>
+
+            <td><?php echo $row['issue_name']; ?></td>
+
+            <td><?php echo $row['users_name']; ?></td>
+
+            <td><?php echo $row['department_name'];  ?></td>
+
+            <td><?php echo $row['status']; ?></td>
+
+
             <td>
-                <div class="dropdown dropstart text-end dot">
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
-                        <i class="bx bx-dots-vertical-rounded "></i>
-                    </button>
-                    <ul class="dropdown-menu  drop">
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
-                    </ul>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
-                <div class="dropdown dropstart text-end dot">
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
-                        <i class="bx bx-dots-vertical-rounded "></i>
-                    </button>
-                    <ul class="dropdown-menu   drop_list">
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
-                    </ul>
-                </div>
-            </td>
-            <div class=""></div>
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
-
-                <div class="dropdown dropstart text-end dot">
-
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
-
-                        <i class="bx bx-dots-vertical-rounded "></i>
-
-                    </button>
-
-                    <ul class="dropdown-menu   drop_list">
-
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
-
-                    </ul>
-
-                </div>
-
-            </td>
-
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
-
-                <div class="dropdown dropstart text-end dot">
-
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
-
-                        <i class="bx bx-dots-vertical-rounded "></i>
-
-                    </button>
-
-                    <ul class="dropdown-menu   drop_list">
-
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
-
-                    </ul>
-
-                </div>
-
-            </td>
-
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
-
-                <div class="dropdown dropstart text-end dot">
-
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
-
-                        <i class="bx bx-dots-vertical-rounded "></i>
-
-                    </button>
-
-                    <ul class="dropdown-menu   drop_list">
-
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
-
-                    </ul>
-
-                </div>
-
-            </td>
-
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
-
-                <div class="dropdown dropstart text-end dot">
-
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
-
-                        <i class="bx bx-dots-vertical-rounded "></i>
-
-                    </button>
-
-                    <ul class="dropdown-menu   drop_list">
-
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
-
-                    </ul>
-
-                </div>
+                <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"> <i class=' bx bx-show'
+                        style="color:blue; font-size:20px; margin-left:5px;"></i>view</a>
+                &nbsp;
+                <a class=" " href="#" style="color:gray;"><i class=' bx bx-edit '
+                        style=" color:gray; font-size:20px; margin-left:5px;"></i>edit</a> &nbsp;
+                <a class=" " href="#" style="color:#7DBA00;"><i class=' bx bx-transfer '
+                        style="color:#7DBA00; font-size:20px; margin-left:5px;"></i>transfer</a>
 
             </td>
         </tr>
+
+        <?php
+                        }
+
+                    }
+
+                    else
+                    {
+
+                
+                ?>
+        <tr>
+            <td colspan="6"> No record found</td>
+        </tr>
+        <?php
+                    }
+                ?>
 
     </tbody>
 </table>

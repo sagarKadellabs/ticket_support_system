@@ -1,6 +1,7 @@
 <?php
 include 'header.php';
 include 'sidebar.php';
+include 'connection.php';
 ?>
 <form action="end_user_submit.php" method="post" style="padding:10px; margin-top:100px; margin-left:auto;">
     <h1>Create End User</h1>
@@ -19,31 +20,19 @@ include 'sidebar.php';
             <label for="password" class="form-label">Password*</label>
             <input type="password" class="form-control form-boxes" placeholder=" Password" name="password" required>
         </div>
-        <?php
-                     $sql= "SELECT * from roles ";
-                     $result= mysqli_query($con,$sql);
-                     if(mysqli_num_rows($result)>0)
-                     {
-                    ?>
-        <div class="col">
-            <label for="role" class="form-label" required>Roles*</label>
-            <select class="form-select form-boxes" name="role" aria-label="Default select example">
-                <option selected>Select Roles</option>
-                <?php
-                        while($row=mysqli_fetch_assoc($result))
-                        {
-                        ?>
-                <option value="<?=$row['id']?>"><?=$row['roles_name']?></option>
-                <?php
-                        }
-                        ?>
-            </select>
+        <div class="col ">
+
+            <label for="role" class="form-label">roles*</label>
+
+            <input type="text" name="role" class="form-control form-control-lg form-boxes" value=<?php 
+echo $_SESSION['roles_name']; ?> readonly>
+            <input type="hidden" name="role" class="form-control form-control-lg form-boxes" value=<?php 
+echo $_SESSION['role_id']; ?>>
+
         </div>
+
     </div>
-    <?php
-            }
-            ?>
-    <div class="row mb-3 mt-3">
+    <div class="row  mt-3">
         <?php
                      $sql= "SELECT * from positions ";
                      $result= mysqli_query($con,$sql);
@@ -90,6 +79,8 @@ include 'sidebar.php';
           }
             ?>
     </div>
+    <br>
+    <br>
     <button type="submit" name="create" class="btn"
         style="background-color:#044BA9; color:white; width:100px;">Create</button>
     <a href="#" style="font: Noto Sans; color:#044BA9"><u>Discard</u></a>
