@@ -68,7 +68,7 @@ echo $_SESSION['role_id']; ?>>
       while($row=mysqli_fetch_assoc($result))
                         {
                         ?>
-                <option value="<?=$row['id']?>"><?=$row['department_name']?></option>
+                <option value="<?=$row['department_id']?>"><?=$row['department_name']?></option>
                 <?php
                         }
                         ?>
