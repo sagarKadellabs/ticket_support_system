@@ -20,7 +20,5 @@ if(isset($_POST['create']))
     header('location:dashboard.php');
  }
 }
- 
 
- 
 ?>

@@ -52,7 +52,7 @@ include 'connection.php';
 
             </div>
             <?php
-            $selectquery = "SELECT * from files where id = ".$_GET['ticket_id'] ;
+            $selectquery = "SELECT * from files ";
             $query = mysqli_query($con,$selectquery);
             $result = mysqli_fetch_assoc($query);
             ?>
@@ -65,8 +65,11 @@ include 'connection.php';
                         <hr>
                         <br>
                         <div class="box p-3">
-                            <?php echo $result['files_name']; ?>
-                            <a href=""> <i class="bx bx-download" style="font-size: 30px; margin-left:280px;"></i> </a>
+                            <?php echo $result['file_upload_path']; ?>
+                            <a download="<?php echo$file_name; ?>"
+                                href="assets/uploaded_files/ <?php echo $file_name; ?>">
+                                <?php echo $file_name; ?> <i class="bx bx-download"
+                                    style="font-size: 30px; margin-left:160px;"></i></a>
                         </div>
                     </div>
                 </div>

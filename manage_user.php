@@ -46,11 +46,14 @@ include 'connection.php';
 
                 <?php
 
-$query= "SELECT *
+$query = "SELECT *
 
-FROM tickets T JOIN users U ON (T.user_id = U.id )
-
-JOIN departments D ON (T.department_id = D.department_id )  ORDER BY ticket_id";
+                    FROM tickets T
+                    JOIN  users U ON (T.user_id = U.id )
+                    JOIN issue I ON (T.issue_type  = I.issue_id)
+                    JOIN positions P ON (U.postion_id = P.id)
+                    WHERE U.role_id= '3' 
+                    ORDER BY ticket_id ";
 
 $query_run = mysqli_query($con ,$query);
 
@@ -62,20 +65,12 @@ if(mysqli_num_rows( $query_run)> 0)
 
     {
         ?>
-
                 <tr>
 
                     <td><?php echo $row['ticket_id']; ?></td>
-
                     <td><?php echo $row['users_name']; ?></td>
                     <td><?php echo $row['position_name']; ?></td>
-                    <td><?php echo $row['issue_type']; ?></td>
-
-
-
-
-
-
+                    <td><?php echo $row['issue_name']; ?></td>
                     <td>
                         <a class=" " href="#"><i class=' bx bx-edit '
                                 style="color:#777777; font-size:20px; margin-left:5px;"></i></a>

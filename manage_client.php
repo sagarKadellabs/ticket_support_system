@@ -49,117 +49,58 @@ include 'connection.php';
                 <tbody class="t_body" id="table_body">
 
                     <?php
-                    $query = "SELECT *
-                    FROM tickets T 
-                    JOIN positions P ON (T.ticket_id = P.id )  
+
+$query = "SELECT *
+
+                    FROM tickets T
                     JOIN  users U ON (T.user_id = U.id )
-                    WHERE U.role_id= '2'";
-                   
-                   
-                    $query_run = mysqli_query($con, $query);
+                    JOIN issue I ON (T.issue_type  = I.issue_id)
+                    JOIN positions P ON (U.postion_id = P.id)
+                    WHERE U.role_id= '2' 
+                    ORDER BY ticket_id ";
 
-                    if (mysqli_num_rows($query_run) > 0) {
-                        foreach ($query_run as $row) {
+$query_run = mysqli_query($con ,$query);
 
-                    ?>
+if(mysqli_num_rows( $query_run)> 0)
+
+{
+
+    while ($row = mysqli_fetch_assoc($query_run))
+
+    {
+        ?>
                     <tr>
+
                         <td><?php echo $row['ticket_id']; ?></td>
                         <td><?php echo $row['users_name']; ?></td>
                         <td><?php echo $row['position_name']; ?></td>
-                        <td><?php echo $row['issue_type'];  ?></td>
-                        <td><?php echo $row['status']; ?></td>
-
+                        <td><?php echo $row['issue_name']; ?></td>
                         <td>
                             <a class=" " href="#"><i class=' bx bx-edit '
                                     style="color:#777777; font-size:20px; margin-left:5px;"></i></a>
-                            <a class=" " href="#"><i class='  bx bx-trash'
+                            <a class=" " href="delete.php"><i class='  bx bx-trash'
                                     style="color:red; font-size:20px; margin-left:10px;"></i></a>
+
                         </td>
                     </tr>
 
                     <?php
                         }
-                    } else {
 
+                    }
 
-                        ?>
+                    else
+                    {
+
+                
+                ?>
                     <tr>
                         <td colspan="6"> No record found</td>
                     </tr>
                     <?php
                     }
-                    ?>
+                ?>
 
-                    <!-- <tbody class="t_body" id="table_body">          
-              <tr>
-                <th scope="row">1</th>
-                <td>John Deo</td>
-                <td>Sale Executives </td>
-                <td>Sales</td>
-                <td>View</td>
-                <td> 
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-               
-                </td>
-            </tr>
-            <tr>
-            <th scope="row">2</th>
-                <td>John Deo</td>
-                <td>Manager</td>
-                <td>Sales</td>
-                <td>Edit</td>
-                <td>
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-                </td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-                <td>John Deo</td>
-                <td>Marketing</td>
-                <td>Sales</td>
-                <td>Transfer</td>
-                <td>
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-                </td>
-            </tr>
-            <tr>
-            <th scope="row">4</th>
-                <td>John Deo</td>
-                <td>Sale Executives </td>
-                <td>Sales</td>
-                <td>Edit</td>
-                <td>
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-                </td>
-            </tr>
-            <tr>
-            <th scope="row">5</th>
-                <td>John Deo</td>
-                <td>Sale Executives </td>
-                <td>Sales</td>
-                <td>Transfer</td>
-                <td>
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-                </td>
-              
-            </tr>
-            <tr>
-            <th scope="row">6</th>
-                <td>John Deo</td>
-                <td>Sale Executives </td>
-                <td>Sales</td>
-                <td>View</td>
-                <td>
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-                </td>
-                
-            </tr> -->
 
                 </tbody>
             </table>
