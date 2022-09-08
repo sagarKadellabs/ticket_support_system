@@ -17,11 +17,12 @@ if(isset($_POST['create']))
     else{
     foreach($brands as $item)
     {
-     echo $item;
-    }
-   $sql = " INSERT INTO `users`(`users_name`,`emails`,`password`,`postion_id`,`role_id`,`department_id`) VALUES ('$users_name','$emails','$password','$pos','$role','$dep')";
+     
+    
+   $sql = " INSERT INTO `users`(`users_name`,`emails`,`password`,`position_id`,`role_id`,`department_id`,`permission`) VALUES ('$users_name','$emails','$password','$pos','$role','$dep','$item')";
    $query = mysqli_query($con,$sql) ;
+    }
 
-   header('location:dashboard.php');   }
+   header('location:manage_client.php');   }
  }
 ?>

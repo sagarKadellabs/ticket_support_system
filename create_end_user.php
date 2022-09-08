@@ -3,8 +3,12 @@ include 'header.php';
 include 'sidebar.php';
 include 'connection.php';
 ?>
+
 <form action="end_user_submit.php" method="post" style="padding:10px; margin-top:100px; margin-left:auto;">
     <h1>Create End User</h1>
+    <?php
+    
+    ?>
     <div class="row mb-3 mt-3">
         <div class="col">
             <label for="users_name" class="form-label">Full Name*</labe>
@@ -48,12 +52,13 @@ echo $_SESSION['role_id']; ?>>
                         while($row=mysqli_fetch_assoc($result))
                         { 
                         ?>
-                <option value="<?=$row['id']?>"><?=$row['position_name']?></option>
+                <option value="<?=$row['position_id']?>"><?=$row['position_name']?></option>
                 <?php
                         }
                         ?>
             </select>
         </div>
+
         <div class="col">
             <?php
                      $sql= "SELECT * from departments ";
@@ -61,6 +66,7 @@ echo $_SESSION['role_id']; ?>>
                      if(mysqli_num_rows($result)>0)
                      {
                     ?>
+
             <label for="dep" class="form-label">Department*</label>
             <select class="form-select form-boxes" name="dep" aria-label="Default select example">
                 <option selected>Select Department</option>

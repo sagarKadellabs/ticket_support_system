@@ -2,6 +2,10 @@
 include 'header.php';
 include 'sidebar.php';
 ?>
+<?php
+//$sql = "UPDATE users set id= ".$_GET['user_id'];
+//mysqli_query($con, $sql);
+//?>
 <form action="create_client_submit.php" method="post" style="padding:10px; margin-top:100px; margin-left:auto;">
     <h1>Create Client</h1>
     <div class="row mb-3 mt-3">
@@ -49,7 +53,7 @@ echo $_SESSION['roles_id']; ?>>
         while($row=mysqli_fetch_assoc($result))
         {
       ?>
-                <option value="<?=$row['id']?>"><?=$row['position_name']?></option>
+                <option value="<?=$row['position_id']?>"><?=$row['position_name']?></option>
                 <?php
           }
         ?>
@@ -69,7 +73,7 @@ echo $_SESSION['roles_id']; ?>>
         while($row=mysqli_fetch_assoc($result))
         {
       ?>
-                <option value="<?=$row['id']?>"><?=$row['department_name']?></option>
+                <option value="<?=$row['department_id']?>"><?=$row['department_name']?></option>
                 <?php
       }
     ?>

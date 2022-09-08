@@ -82,6 +82,8 @@ echo $_SESSION['department_id'];
         </div>
         <input type="hidden" name="status" class="form-control form-control-lg form-boxes" value=<?php 
             echo "Pending";?>>
+        <input type="hidden" name="priority" class="form-control form-control-lg form-boxes" value=<?php 
+            echo "Low";?>>
     </div>
 
     <div class="row">
@@ -98,7 +100,7 @@ echo $_SESSION['department_id'];
         </div>
         </label>
         <input type="file" multiple="multiple" id="fileinput" class=" d-none form-control form-control-lg form-boxes"
-            placeholder="Enter email" name="file[]">
+            placeholder="Enter email" name="file_upload[]">
         <div class="col-10">
             <span id="selected_filename"></span>
         </div>

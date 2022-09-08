@@ -49,15 +49,16 @@ include 'connection.php';
                 <tbody class="t_body" id="table_body">
 
                     <?php
+                   
 
 $query = "SELECT *
 
-                    FROM tickets T
-                    JOIN  users U ON (T.user_id = U.id )
-                    JOIN issue I ON (T.issue_type  = I.issue_id)
-                    JOIN positions P ON (U.postion_id = P.id)
-                    WHERE U.role_id= '2' 
-                    ORDER BY ticket_id ";
+                    FROM users U 
+                 
+                    JOIN departments D ON (U.department_id  = D.department_id)
+                    JOIN positions P ON (U.position_id = P.position_id)
+                    WHERE U.role_id= '2' AND is_delete='0' 
+                     order by U.id";
 
 $query_run = mysqli_query($con ,$query);
 
@@ -71,14 +72,15 @@ if(mysqli_num_rows( $query_run)> 0)
         ?>
                     <tr>
 
-                        <td><?php echo $row['ticket_id']; ?></td>
+                        <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['users_name']; ?></td>
                         <td><?php echo $row['position_name']; ?></td>
-                        <td><?php echo $row['issue_name']; ?></td>
+                        <td><?php echo $row['department_name']; ?></td>
+                        <td><?php echo $row['permission']; ?></td>
                         <td>
-                            <a class=" " href="#"><i class=' bx bx-edit '
+                            <a class=" " href="update_client.php?id=<?= $row['id']; ?>"><i class=' bx bx-edit '
                                     style="color:#777777; font-size:20px; margin-left:5px;"></i></a>
-                            <a class=" " href="delete.php"><i class='  bx bx-trash'
+                            <a class=" " href="delete_client.php?user_id=<?= $row['id']; ?>"><i class='  bx bx-trash'
                                     style="color:red; font-size:20px; margin-left:10px;"></i></a>
 
                         </td>

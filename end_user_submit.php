@@ -15,9 +15,10 @@ if(isset($_POST['create']))
     echo"<script> window.location='create_end_user.php'; alert('Email is already exist')</script>";
  }   else
  {
-    $sql = " INSERT INTO `users`(`users_name`,`emails`,`password`,`postion_id`,`role_id`,`department_id`) VALUES ('$users_name','$emails','$password','$pos','$role','$dep')";
+    $sql = " INSERT INTO `users`(`users_name`,`emails`,`password`,`position_id`,`role_id`,`department_id`) VALUES ('$users_name','$emails','$password','$pos','$role','$dep')";
  $query = mysqli_query($con,$sql);
-    header('location:dashboard.php');
+ 
+    header('location:manage_user.php');
  }
 }
 

@@ -30,50 +30,59 @@ include 'connection.php';
             <!-- D Dashboard end -->
 
             <!-- D checkbox row start -->
-            <div class="row  mt-2">
-                <div class="col pt-2">
+            <form action="dashboard.php" method="POST">
+                <div class="row  mt-2">
+                    <div class="col pt-2">
+                        <div class="check_item">
 
-                    <div class="form-check form-check-inline">
-                        <label class="form-check-label " for="flexCheckChecked">
-                            ALL
-                        </label>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label " for="flexCheckChecked">
+                                    ALL
+                                </label>
+                                <input class="form-check-input" type="checkbox" value="" name="status[0]"
+                                    id="flexCheckChecked">
 
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="open" name="status[1]"
+                                    id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    OPEN
+                                </label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="pending" name="status[2]"
+                                    id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    HOLD
+                                </label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="closed" name="status[3]"
+                                    id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    CLOSED
+                                </label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="in-progress" name="status[4]"
+                                    id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    IN PROGRASS
+                                </label>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            OPEN
-                        </label>
+                    <div class="col  ">
+                        <button type="submit" name="submit" value="submit" class=" btn1 "><i class=' bx bx-slider'></i>
+                            Filter</button>
                     </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            HOLD
-                        </label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            CLOSED
-                        </label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            IN PROGRASS
-                        </label>
-                    </div>
-
                 </div>
-                <div class="col  ">
-                    <button type="button" class=" btn1 "><i class=' bx bx-slider'></i> Filter</button>
-                </div>
-            </div>
+            </form>
         </div>
 
 
@@ -89,16 +98,95 @@ include 'connection.php';
                     <th scope="col">ACTION</th>
                 </tr>
             </thead>
-
             <tbody class="t_body" id="table_body">
-
                 <?php
+            if (isset($_POST['submit'])) {
+                if (count($_POST['status']) > 1) {
+
+                    $queryString = '(';
+
+                    $i = 0;
+
+                    $i = (count($_POST['status']));
+
+                    foreach($_POST['status'] as $key => $value) {
+
+                        // print_r($key);
+
+                        // exit;
+
+                        if ($i == $key) {
+
+                            $queryString .= "'" . $value . "')";
+
+                            break;
+
+                        }
+
+                        $queryString .="'". $value . "',";
+
+                    }
+
+                    $quer = 'status IN';
+
+                    $queryString = $quer . $queryString;
+
+                }
+                else
+                {
+                foreach ($_POST['status'] as $value) {
+
+                    
+
+                    $queryString = "";
+
+                    switch ($value) {
+
+                        case 'open':
+
+                            $queryString = $queryString . "status ='open'";
+
+                            break;
+
+                        case 'pending':
+
+                            $queryString = $queryString . "status ='pending'";
+
+                            break;
+
+                        case 'closed':
+
+                            $queryString = $queryString . "status ='closed'";
+
+                            break;
+
+                        case 'in-progress':
+
+                            $queryString = $queryString . "status ='in-progress'";
+
+                            break;
+                            
+
+                        default:
+
+                            $queryString = $queryString . "status IN ('open', 'pending', 'in-progress','closed')";
+
+                            break;
+                        }
+
+                    }
+                }
+            
+?>
+                <?php
+               
+            
 
 $query= "SELECT *
 
 FROM tickets T JOIN users U ON (T.user_id = U.id )
 
-JOIN departments D ON (T.department_id = D.department_id ) JOIN issue I ON (T.issue_type = I.issue_id) ORDER BY ticket_id";
+JOIN departments D ON (T.department_id = D.department_id ) JOIN issue I ON (T.issue_type = I.issue_id) where $queryString order by ticket_id";
 
 $query_run = mysqli_query($con ,$query);
 
@@ -151,6 +239,70 @@ if(mysqli_num_rows( $query_run)> 0)
                 </tr>
                 <?php
                     }
+            }
+            else
+            {
+                
+                $query= "SELECT *
+                
+                FROM tickets T JOIN users U ON (T.user_id = U.id )
+                
+                JOIN departments D ON (T.department_id = D.department_id ) JOIN issue I ON (T.issue_type = I.issue_id) ORDER BY ticket_id" ;
+                
+                $query_run = mysqli_query($con ,$query);
+                
+                if(mysqli_num_rows( $query_run)> 0)
+                
+                {
+                
+                    while ($row = mysqli_fetch_assoc($query_run))
+                
+                    {
+                        ?>
+
+                <tr>
+
+                    <td><?php echo $row['ticket_id']; ?></td>
+
+                    <td><?php echo $row['issue_name']; ?></td>
+
+                    <td><?php echo $row['users_name']; ?></td>
+
+                    <td><?php echo $row['department_name'];  ?></td>
+
+                    <td><?php echo $row['status']; ?></td>
+
+
+                    <td>
+                        <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"> <i
+                                class=' bx bx-show' style="color:blue; font-size:20px; margin-left:5px;"></i>view</a>
+                        &nbsp;
+                        <a class=" " href="#" style="color:gray;"><i class=' bx bx-edit '
+                                style=" color:gray; font-size:20px; margin-left:5px;"></i>edit</a> &nbsp;
+                        <a class=" " href="#" style="color:#7DBA00;"><i class=' bx bx-transfer '
+                                style="color:#7DBA00; font-size:20px; margin-left:5px;"></i>transfer</a>
+
+                    </td>
+                </tr>
+
+                <?php
+                                        }
+                
+                                    }
+                
+                                    else
+                                    {
+                
+                                
+                                ?>
+                <tr>
+                    <td colspan="6"> No record found</td>
+                </tr>
+                <?php
+                                    }
+                                
+                                
+                }
                 ?>
 
             </tbody>
