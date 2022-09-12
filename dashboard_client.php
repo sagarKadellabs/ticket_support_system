@@ -172,7 +172,7 @@ include 'connection.php';
                 FROM tickets T JOIN users U ON (T.user_id = U.id )
 
                 JOIN departments D ON (T.department_id = D.department_id ) JOIN issue I ON (T.issue_department =
-                I.issue_id) where T.department_id='". $_SESSION['department_id']."' AND $queryString ";
+                I.issue_id) where I.issue_id='". $_SESSION['department_id']."' AND $queryString ";
 
                 $query_run = mysqli_query($con ,$query);
 
@@ -235,7 +235,7 @@ include 'connection.php';
                 
                 FROM tickets T JOIN users U ON (T.user_id = U.id )
                 
-                JOIN departments D ON (T.department_id = D.department_id ) JOIN issue I ON (T.issue_department = I.issue_id) where T.department_id='". $_SESSION['department_id']."'" ;
+                JOIN departments D ON (T.department_id = D.department_id ) JOIN issue I ON (T.issue_department = I.issue_id) where I.issue_id='". $_SESSION['department_id']."'" ;
                 
                 $query_run = mysqli_query($con ,$query);
                 
