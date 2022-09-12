@@ -57,9 +57,9 @@ echo $_SESSION['department_id'];
                      {
                     ?>
         <div class="col p-4">
-            <label for="issue" class="form-label">Issue type*</label>
+            <label for="issue" class="form-label">Issue departments*</label>
             <select class="form-select form-boxes" name="issue" aria-label="Default select example" required>
-                <option selected>Issue</option>
+                <option selected>Issue Department</option>
                 <?php
                         while($row=mysqli_fetch_assoc($result))
                         {

@@ -9,7 +9,7 @@ if(isset($_POST['create'])){
     $message = $_POST['message'];
     $status = $_POST['status'];
     $priority = $_POST['priority'];
-    $sql = " INSERT INTO `tickets`(`user_id`,`department_id`,`issue_type`,`message`,`status`,`priority`) VALUES (' $user_id','$department','$issue','$message','$status','$priority')";
+    $sql = " INSERT INTO `tickets`(`user_id`,`department_id`,`issue_department`,`message`,`status`,`priority`) VALUES (' $user_id','$department','$issue','$message','$status','$priority')";
     $query = mysqli_query($con,$sql);
     $last_id = mysqli_insert_id($con);
    if(count($_FILES['file_upload']['name']) != 0)
