@@ -6,6 +6,7 @@ include 'connection.php';
 ?>
 
 <title>Manage Client!!</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
 <body id="body-pd">
 
@@ -18,12 +19,12 @@ include 'connection.php';
             <div class="row  mt-4 ">
 
                 <div class="col  h2"><b>Manage Client</b></div>
-                <div class="col ">
+                <!-- <div class="col ">
                     <div class="box">
                         <i class='  bx bx-search-alt-2'></i>
                         <input id="myInput" type="text" placeholder="Search..">
                     </div>
-                </div>
+                </div> -->
                 &emsp; &emsp; &emsp; &emsp; &emsp;
                 <div class="col  ">
                     <form action="create_client.php">
@@ -34,7 +35,12 @@ include 'connection.php';
 
             <!-- D Dashboard end -->
 
-            <table class=" table tbl" id="data">
+            <table class=" table tbl" id="data" style="margin-top: 15px;
+    padding: 20px;
+    width: 95%;
+    border: #F4FBFF;
+    border-collapse: separate;
+    border-spacing: 0 0.5em;">
 
                 <thead style="color:#777777;">
                     <tr>
@@ -112,32 +118,11 @@ if(mysqli_num_rows( $query_run)> 0)
 
 
 </body>
-
-</html>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 <script>
 $(document).ready(function() {
-    $('#data').after('<div id="nav"></div>');
-    var rowsShown = 5;
-    var rowsTotal = $('#data tbody tr').length;
-    var numPages = rowsTotal / rowsShown;
-    for (i = 0; i < numPages; i++) {
-        var pageNum = i + 1;
-        $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
-    }
-    $('#data tbody tr').hide();
-    $('#data tbody tr').slice(0, rowsShown).show();
-    $('#nav a:first').addClass('active');
-    $('#nav a').bind('click', function() {
-        $('#nav a').removeClass('active');
-        $(this).addClass('active');
-        var currPage = $(this).attr('rel');
-        var startItem = currPage * rowsShown;
-        var endItem = startItem + rowsShown;
-        $('#data tbody tr').css('opacity', '0.0').hide().slice(startItem,
-            endItem).
-        css('display', 'table-row').animate({
-            opacity: 1
-        }, 300);
-    });
+    $('#data').DataTable();
 });
 </script>
+
+</html>

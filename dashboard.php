@@ -4,11 +4,12 @@ include 'sidebar.php';
 include 'connection.php';
 ?>
 <title>Dashboard!!</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
 <body id="body-pd">
 
 
-    <div class="row ">
+    <div class="row">
 
 
         <div class="col">
@@ -17,12 +18,12 @@ include 'connection.php';
             <div class="row  mt-4 ">
                 <span><b>Welcome Admin,</b></span>
                 <div class="col  h2"><b>Dashboard</b></div>
-                <div class="col ">
-                    <div class="box">
+                <!-- <div class="col ">
+                         <div class="box">
                         <i class='  bx bx-search-alt-2'></i>
                         <input id="myInput" type="text" placeholder="Search..">
-                    </div>
-                </div>
+                    </div> 
+            </div> -->
 
 
             </div> <br>
@@ -86,7 +87,13 @@ include 'connection.php';
             <br>
         </div>
 
-        <table class=" table tbl" id="data" style="text-align:center;">
+
+        <table class="table " id="data" style="margin-top: 15px;
+    padding: 20px;
+    width: 95%;
+    border: #F4FBFF;
+    border-collapse: separate;
+    border-spacing: 0 0.5em;">
 
             <thead style="color:#777777;">
                 <tr>
@@ -103,34 +110,9 @@ include 'connection.php';
             if (isset($_POST['submit'])) {
                 if (count($_POST['status']) > 1) {
 
-                    $queryString = '(';
+                    $queryString ="";
 
-                    $i = 0;
-
-                    $i = (count($_POST['status']));
-
-                    foreach($_POST['status'] as $key => $value) {
-
-                        // print_r($key);
-
-                        // exit;
-
-                        if ($i == $key) {
-
-                            $queryString .= "'" . $value . "')";
-
-                            break;
-
-                        }
-
-                        $queryString .="'". $value . "',";
-
-                    }
-
-                    $quer = 'status IN';
-
-                    $queryString = $quer . $queryString;
-
+                    $queryString = "status IN ('" . implode("','", $_POST['status']) . "')";
                 }
                 else
                 {
@@ -307,40 +289,14 @@ if(mysqli_num_rows( $query_run)> 0)
 
             </tbody>
         </table>
-        <div class="pagination-container">
-            <nav>
-                <ul class="pagination"></ul>
-            </nav>
-        </div>
-
 
 </body>
-
-</html>
+<br>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 <script>
 $(document).ready(function() {
-    $('#data').after('<div id="nav"></div>');
-    var rowsShown = 5;
-    var rowsTotal = $('#data tbody tr').length;
-    var numPages = rowsTotal / rowsShown;
-    for (i = 0; i < numPages; i++) {
-        var pageNum = i + 1;
-        $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
-    }
-    $('#data tbody tr').hide();
-    $('#data tbody tr').slice(0, rowsShown).show();
-    $('#nav a:first').addClass('active');
-    $('#nav a').bind('click', function() {
-        $('#nav a').removeClass('active');
-        $(this).addClass('active');
-        var currPage = $(this).attr('rel');
-        var startItem = currPage * rowsShown;
-        var endItem = startItem + rowsShown;
-        $('#data tbody tr').css('opacity', '0.0').hide().slice(startItem,
-            endItem).
-        css('display', 'table-row').animate({
-            opacity: 1
-        }, 300);
-    });
+    $('#data').DataTable();
 });
 </script>
+
+</html>

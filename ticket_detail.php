@@ -38,7 +38,7 @@ include 'connection.php';
                     <p class="p-1">Status :</p>
                 </div>
                 <?php
-                $getissue = mysqli_query($con,"select * from issue where  issue_id =" .$data['issue_type']);
+                $getissue = mysqli_query($con,"select * from issue where  issue_id =" .$data['issue_department']);
      $details = mysqli_fetch_assoc($getissue);
      ?>
                 <div class="mb-4 col-6 ">
