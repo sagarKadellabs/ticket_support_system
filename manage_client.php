@@ -6,6 +6,7 @@ include 'connection.php';
 ?>
 
 <title>Manage Client!!</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
 <body id="body-pd">
 
@@ -18,12 +19,12 @@ include 'connection.php';
             <div class="row  mt-4 ">
 
                 <div class="col  h2"><b>Manage Client</b></div>
-                <div class="col ">
+                <!-- <div class="col ">
                     <div class="box">
                         <i class='  bx bx-search-alt-2'></i>
                         <input id="myInput" type="text" placeholder="Search..">
                     </div>
-                </div>
+                </div> -->
                 &emsp; &emsp; &emsp; &emsp; &emsp;
                 <div class="col  ">
                     <form action="create_client.php">
@@ -34,7 +35,12 @@ include 'connection.php';
 
             <!-- D Dashboard end -->
 
-            <table class=" table tbl">
+            <table class=" table tbl" id="data" style="margin-top: 15px;
+    padding: 20px;
+    width: 95%;
+    border: #F4FBFF;
+    border-collapse: separate;
+    border-spacing: 0 0.5em;">
 
                 <thead style="color:#777777;">
                     <tr>
@@ -49,117 +55,60 @@ include 'connection.php';
                 <tbody class="t_body" id="table_body">
 
                     <?php
-                    $query = "SELECT *
-                    FROM tickets T 
-                    JOIN positions P ON (T.ticket_id = P.id )  
-                    JOIN  users U ON (T.user_id = U.id )
-                    WHERE U.role_id= '2'";
                    
-                   
-                    $query_run = mysqli_query($con, $query);
 
-                    if (mysqli_num_rows($query_run) > 0) {
-                        foreach ($query_run as $row) {
+$query = "SELECT *
 
-                    ?>
+                    FROM users U 
+                 
+                    JOIN departments D ON (U.department_id  = D.department_id)
+                    JOIN positions P ON (U.position_id = P.position_id)
+                    WHERE U.role_id= '2' AND is_delete='0' 
+                     order by U.id DESC";
+
+$query_run = mysqli_query($con ,$query);
+
+if(mysqli_num_rows( $query_run)> 0)
+
+{
+
+    while ($row = mysqli_fetch_assoc($query_run))
+
+    {
+        ?>
                     <tr>
-                        <td><?php echo $row['ticket_id']; ?></td>
+
+                        <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['users_name']; ?></td>
                         <td><?php echo $row['position_name']; ?></td>
-                        <td><?php echo $row['issue_type'];  ?></td>
-                        <td><?php echo $row['status']; ?></td>
-
+                        <td><?php echo $row['department_name']; ?></td>
+                        <td><?php echo $row['permission']; ?></td>
                         <td>
-                            <a class=" " href="#"><i class=' bx bx-edit '
+                            <a class=" " href="update_client.php?id=<?= $row['id']; ?>"><i class=' bx bx-edit '
                                     style="color:#777777; font-size:20px; margin-left:5px;"></i></a>
-                            <a class=" " href="#"><i class='  bx bx-trash'
+                            <a class=" " href="delete_client.php?user_id=<?= $row['id']; ?>"><i class='  bx bx-trash'
                                     style="color:red; font-size:20px; margin-left:10px;"></i></a>
+
                         </td>
                     </tr>
 
                     <?php
                         }
-                    } else {
 
+                    }
 
-                        ?>
+                    else
+                    {
+
+                
+                ?>
                     <tr>
                         <td colspan="6"> No record found</td>
                     </tr>
                     <?php
                     }
-                    ?>
+                ?>
 
-                    <!-- <tbody class="t_body" id="table_body">          
-              <tr>
-                <th scope="row">1</th>
-                <td>John Deo</td>
-                <td>Sale Executives </td>
-                <td>Sales</td>
-                <td>View</td>
-                <td> 
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-               
-                </td>
-            </tr>
-            <tr>
-            <th scope="row">2</th>
-                <td>John Deo</td>
-                <td>Manager</td>
-                <td>Sales</td>
-                <td>Edit</td>
-                <td>
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-                </td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-                <td>John Deo</td>
-                <td>Marketing</td>
-                <td>Sales</td>
-                <td>Transfer</td>
-                <td>
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-                </td>
-            </tr>
-            <tr>
-            <th scope="row">4</th>
-                <td>John Deo</td>
-                <td>Sale Executives </td>
-                <td>Sales</td>
-                <td>Edit</td>
-                <td>
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-                </td>
-            </tr>
-            <tr>
-            <th scope="row">5</th>
-                <td>John Deo</td>
-                <td>Sale Executives </td>
-                <td>Sales</td>
-                <td>Transfer</td>
-                <td>
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-                </td>
-              
-            </tr>
-            <tr>
-            <th scope="row">6</th>
-                <td>John Deo</td>
-                <td>Sale Executives </td>
-                <td>Sales</td>
-                <td>View</td>
-                <td>
-                <a class=" "  href="#" ><i  class=' bx bx-edit '  style="color:#777777; font-size:20px; margin-left:5px;"></i></a> 
-                <a class=" "  href="#" ><i  class='  bx bx-trash'  style="color:red; font-size:20px; margin-left:10px;"></i></a> 
-                </td>
-                
-            </tr> -->
 
                 </tbody>
             </table>
@@ -169,5 +118,11 @@ include 'connection.php';
 
 
 </body>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<script>
+$(document).ready(function() {
+    $('#data').DataTable();
+});
+</script>
 
 </html>

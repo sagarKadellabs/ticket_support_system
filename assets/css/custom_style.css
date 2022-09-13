@@ -181,7 +181,7 @@ a {
     
 }
 
-.tbl {
+/* #data {
     margin-top: 15px;
     padding: 20px;
     width: 95%;
@@ -189,9 +189,9 @@ a {
     border-collapse: separate;
     border-spacing: 0 0.5em;
 
-}
+} */
 
-.t_body {
+#table_body {
     box-sizing: border-box;
     background-color: #F4FBFF;
     padding: 20px;

@@ -2,27 +2,31 @@
 include 'header.php';
 include 'sidebar.php';
 ?>
+<?php
+//$sql = "UPDATE users set id= ".$_GET['user_id'];
+//mysqli_query($con, $sql);
+//?>
 <form action="create_client_submit.php" method="post" style="padding:10px; margin-top:100px; margin-left:auto;">
     <h1>Create Client</h1>
     <div class="row mb-3 mt-3">
         <div class="col">
             <label for="users_name" class="form-label">Full Name*</label>
 
-            <input type="text" class="form-control form-boxes" placeholder=" Full Name" name="users_name" required>
+            <input type="text" class="form-control form-boxes" placeholder=" Full Name" name="users_name">
         </div>
         <div class="col">
             <label for="emails" class="form-label">Email*</label>
 
-            <input type="email" class="form-control form-boxes" placeholder="Email Address " name="emails" required>
+            <input type="email" class="form-control form-boxes" placeholder="Email Address " name="emails">
         </div>
 
     </div>
     <div class="row mb-3 mt-3">
         <div class="col">
             <label for="password" class="form-label">Password*</label>
-            <input type="password" class="form-control form-boxes" placeholder=" Password" name="password" required>
+            <input type="password" class="form-control form-boxes" placeholder=" Password" name="password">
         </div>
-        <div class="col p-4">
+        <div class="col ">
 
             <label for="role" class="form-label">roles*</label>
 
@@ -49,7 +53,7 @@ echo $_SESSION['roles_id']; ?>>
         while($row=mysqli_fetch_assoc($result))
         {
       ?>
-                <option value="<?=$row['id']?>"><?=$row['position_name']?></option>
+                <option value="<?=$row['position_id']?>"><?=$row['position_name']?></option>
                 <?php
           }
         ?>
@@ -69,7 +73,7 @@ echo $_SESSION['roles_id']; ?>>
         while($row=mysqli_fetch_assoc($result))
         {
       ?>
-                <option value="<?=$row['id']?>"><?=$row['department_name']?></option>
+                <option value="<?=$row['department_id']?>"><?=$row['department_name']?></option>
                 <?php
       }
     ?>
@@ -83,7 +87,7 @@ echo $_SESSION['roles_id']; ?>>
     <label for="text" class="form-label">Access to Ticket*</label><br>
     <div class="form-check form-check-inline">
 
-        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <input class="form-check-input" type="radio" name="brands[]" id="inlineRadio1" value="View">
 
         <label class="form-check-label" for="inlineRadio1">View</label>
 
@@ -91,7 +95,7 @@ echo $_SESSION['roles_id']; ?>>
 
     <div class="form-check form-check-inline">
 
-        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <input class="form-check-input" type="radio" name="brands[]" id="inlineRadio2" value="Edit">
 
         <label class="form-check-label" for="inlineRadio2">Edit</label>
 
@@ -99,7 +103,7 @@ echo $_SESSION['roles_id']; ?>>
 
     <div class="form-check form-check-inline">
 
-        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <input class="form-check-input" type="radio" name="brands[]" id="inlineRadio2" value="Transfer">
 
         <label class="form-check-label" for="inlineRadio2">Transfer</label>
 
