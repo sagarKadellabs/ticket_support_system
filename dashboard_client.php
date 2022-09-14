@@ -200,7 +200,7 @@ include 'connection.php';
 
 
                     <td>
-                        <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"> <i
+                        <a class=" " href="ticket_detail_client.php?ticket_id=<?= $row['ticket_id']; ?>"> <i
                                 class=' bx bx-show' style="color:blue; font-size:20px; margin-left:5px;"></i>view</a>
                         &nbsp;
                         <a class=" " href="#" style="color:gray;"><i class=' bx bx-edit '
@@ -262,7 +262,7 @@ include 'connection.php';
 
 
                     <td>
-                        <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"> <i
+                        <a class=" " href="ticket_detail_client.php?ticket_id=<?= $row['ticket_id']; ?>"> <i
                                 class=' bx bx-show' style="color:blue; font-size:20px; margin-left:5px;"></i>view</a>
                         &nbsp;
                         <a class=" " href="#" style="color:gray;"><i class=' bx bx-edit '

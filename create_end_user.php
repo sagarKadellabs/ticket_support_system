@@ -12,17 +12,20 @@ include 'connection.php';
     <div class="row mb-3 mt-3">
         <div class="col">
             <label for="users_name" class="form-label">Full Name*</labe>
-                <input type="text" class="form-control form-boxes" placeholder=" Full Name" name="users_name" required>
+                <input type="text" class="form-control form-boxes" placeholder=" Full Name" name="users_name"
+                    id="users_name" required>
         </div>
         <div class="col">
             <label for="emails" class="form-label">Email*</label>
-            <input type="email" class="form-control form-boxes" placeholder="Email Address " name="emails" required>
+            <input type="email" class="form-control form-boxes" placeholder="Email Address " id="emails" name="emails"
+                required>
         </div>
     </div>
     <div class="row mb-3 mt-3">
         <div class="col">
             <label for="password" class="form-label">Password*</label>
-            <input type="password" class="form-control form-boxes" placeholder=" Password" name="password" required>
+            <input type="password" class="form-control form-boxes" placeholder=" Password" id="password" name="password"
+                required>
         </div>
         <div class="col ">
 
@@ -87,7 +90,7 @@ echo $_SESSION['role_id']; ?>>
     </div>
     <br>
     <br>
-    <button type="submit" name="create" class="btn"
+    <button type="submit" name="create" value="create" class="btn"
         style="background-color:#044BA9; color:white; width:100px;">Create</button>
     <a href="#" style="font: Noto Sans; color:#044BA9"><u>Discard</u></a>
 </form>

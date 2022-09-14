@@ -31,5 +31,5 @@ if(isset($_POST['create'])){
 
 }
 
- header('location:create_ticket.php');
+echo"<script> window.location='create_ticket.php'; alert('Ticket is successfully created..')</script>";
 ?>

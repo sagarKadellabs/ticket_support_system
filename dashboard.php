@@ -200,7 +200,8 @@ if(mysqli_num_rows( $query_run)> 0)
                         &nbsp;
                         <a class=" " href="#" style="color:gray;"><i class=' bx bx-edit '
                                 style=" color:gray; font-size:20px; margin-left:5px;"></i>edit</a> &nbsp;
-                        <a class=" " href="#" style="color:#7DBA00;"><i class=' bx bx-transfer '
+                        <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"
+                            style="color:#7DBA00;"><i class=' bx bx-transfer '
                                 style="color:#7DBA00; font-size:20px; margin-left:5px;"></i>transfer</a>
 
                     </td>
@@ -217,7 +218,8 @@ if(mysqli_num_rows( $query_run)> 0)
                 
                 ?>
                 <tr>
-                    <td colspan="6"> No record found</td>
+                    <td colspan=" 6"> No record found
+                    </td>
                 </tr>
                 <?php
                     }
@@ -259,9 +261,11 @@ if(mysqli_num_rows( $query_run)> 0)
                         <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"> <i
                                 class=' bx bx-show' style="color:blue; font-size:20px; margin-left:5px;"></i>view</a>
                         &nbsp;
-                        <a class=" " href="#" style="color:gray;"><i class=' bx bx-edit '
-                                style=" color:gray; font-size:20px; margin-left:5px;"></i>edit</a> &nbsp;
-                        <a class=" " href="#" style="color:#7DBA00;"><i class=' bx bx-transfer '
+                        <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>" style="color:gray;"><i
+                                class=' bx bx-edit '
+                                style="color:gray; font-size:20px; margin-left:5px;"></i>Edit</a>&nbsp;
+                        <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"
+                            style="color:#7DBA00;"><i class=' bx bx-transfer '
                                 style="color:#7DBA00; font-size:20px; margin-left:5px;"></i>transfer</a>
 
                     </td>
