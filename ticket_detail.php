@@ -57,20 +57,14 @@ include 'connection.php';
                     </h5>
                     <h5 class="p-2"><?php 
                         echo $data['priority'];
-                         ?><button type="button" class="dot" data-bs-toggle="dropdown"
-                            style="margin-left: 30px; background-color:white; border:none;">
-
-                            <i class="bx bx-pencil"></i>
-
-                        </button></h5>
+                         ?>
+                    </h5>
                     <h5 class="p-2"><?php 
                         echo $data['status'];
-                         ?><button type="button" class="dot" data-bs-toggle="dropdown"
-                            style="margin-left: 30px; background-color:white; border:none;">
-
-                            <i class="bx bx-pencil"></i>
-
-                        </button></h5>
+                         ?> <button type="button" class="bx bx-pencil" data-bs-toggle="modal"
+                            data-bs-target="#examplepencil"
+                            style="margin-left: 30px; margin-top: 30px; background-color:white; border:none;"></button>
+                    </h5>
 
                 </div>
 
@@ -229,6 +223,80 @@ include 'connection.php';
         </div>
     </div>
 </div>
+<div class="modal fade container" id="examplepencil" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Transfer issue department</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">current current ticket status:</label>
+                        <input type="text" class="form-control" id="recipient-name" value="<?php 
+                        echo $data['status'];
+                         ?>" readonly>
+                    </div>
+                    <div>
+                        <label for="selected" class="form-label"> Ticket Status*</label>
+                        <select class="form-select form-boxes" name="selected" aria-label="Default select example">
+                            <option>select status</option>
+                            <option value="Hold">Hold
+                            </option>
+                            <option value="Closed">Closed</option>
+                            <option value="Open">Open</option>
+                            <option value="in-progress">in-progress</option>
+                        </select>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" name="status" value="status" class="btn btn-primary">Save change</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade container" id="examplepencil" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Transfer issue department</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">current current ticket status:</label>
+                        <input type="text" class="form-control" id="recipient-name" value="<?php 
+                        echo $data['status'];
+                         ?>" readonly>
+                    </div>
+                    <div>
+                        <label for="selected" class="form-label"> Ticket Status*</label>
+                        <select class="form-select form-boxes" name="selected" aria-label="Default select example">
+                            <option>select status</option>
+                            <option value="Hold">Hold
+                            </option>
+                            <option value="Closed">Closed</option>
+                            <option value="Open">Open</option>
+                            <option value="in-progress">in-progress</option>
+                        </select>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" name="status" value="status" class="btn btn-primary">Save change</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 <?php
 
  
@@ -245,4 +313,22 @@ if(isset($_POST['submit']))
     
     
 }   
+?>
+<?php
+
+ 
+if(isset($_POST['status']))
+{
+  $selected =$_POST['selected'];
+  
+
+    $sqel= "UPDATE tickets SET status = '$selected' where ticket_id = ".$data['ticket_id'] ;
+    $matter = mysqli_query($con,$sqel);
+    if($matter)
+    {
+        echo "<script>window.location='dashboard.php';alert('Status Changed')</script>";
+    }
+    
+}
+   
 ?>
