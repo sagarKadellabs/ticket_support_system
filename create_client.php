@@ -26,6 +26,14 @@ include 'sidebar.php';
             <label for="password" class="form-label">Password*</label>
             <input type="password" class="form-control form-boxes" placeholder=" Password" name="password">
         </div>
+        <?php
+        $role2 = mysqli_query($con,"select * from roles where role_id='2'");
+  if(mysqli_num_rows($role2) > 0)
+  {
+      $role_name2 = mysqli_fetch_assoc($role2);
+      $_SESSION['role_name'] = $role_name2["roles_name"];
+      
+  }?>
         <div class="col ">
 
             <label for="role" class="form-label">roles*</label>
