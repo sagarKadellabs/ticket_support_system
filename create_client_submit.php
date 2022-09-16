@@ -23,6 +23,7 @@ if(isset($_POST['create']))
    $query = mysqli_query($con,$sql) ;
     }
 
-   header('location:manage_client.php');   }
+   header('location:manage_client.php');   
+  }
  }
 ?>
