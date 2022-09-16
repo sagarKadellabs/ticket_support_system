@@ -2,51 +2,42 @@
 include 'header.php';
 include 'sidebar.php';
 ?>
+<?php
+//$sql = "UPDATE users set id= ".$_GET['user_id'];
+//mysqli_query($con, $sql);
+//?>
 <form action="create_client_submit.php" method="post" style="padding:10px; margin-top:100px; margin-left:auto;">
     <h1>Create Client</h1>
     <div class="row mb-3 mt-3">
         <div class="col">
             <label for="users_name" class="form-label">Full Name*</label>
 
-            <input type="text" class="form-control form-boxes" placeholder=" Full Name" name="users_name" required>
+            <input type="text" class="form-control form-boxes" placeholder=" Full Name" name="users_name">
         </div>
         <div class="col">
             <label for="emails" class="form-label">Email*</label>
 
-            <input type="email" class="form-control form-boxes" placeholder="Email Address " name="emails" required>
+            <input type="email" class="form-control form-boxes" placeholder="Email Address " name="emails">
         </div>
 
     </div>
     <div class="row mb-3 mt-3">
         <div class="col">
             <label for="password" class="form-label">Password*</label>
+            <input type="password" class="form-control form-boxes" placeholder=" Password" name="password">
+        </div>
+        <div class="col ">
 
-            <input type="password" class="form-control form-boxes" placeholder=" Password" name="password" required>
+            <label for="role" class="form-label">roles*</label>
+
+            <input type="text" name="role" class="form-control form-control-lg form-boxes" value=<?php 
+echo $_SESSION['role_name']; ?> readonly>
+            <input type="hidden" name="role" class="form-control form-control-lg form-boxes" value=<?php 
+echo $_SESSION['roles_id']; ?>>
+
         </div>
-        <?php
-      $sql= "SELECT * from roles ";
-      $result= mysqli_query($con,$sql);
-      if(mysqli_num_rows($result)>0)
-      {
-    ?>
-        <div class="col">
-            <label for="role" class="form-label" required>Roles*</label>
-            <select class="form-select form-boxes" name="role" aria-label="Default select example">
-                <option selected>Select Roles</option>
-                <?php
-         while($row=mysqli_fetch_assoc($result))
-         {
-      ?>
-                <option value="<?=$row['id']?>"><?=$row['roles_name']?></option>
-                <?php
-         }
-      ?>
-            </select>
-        </div>
+
     </div>
-    <?php
-      }
-  ?>
     <div class="row mb-3 mt-3">
         <?php
       $sql= "SELECT * from positions ";
@@ -62,7 +53,7 @@ include 'sidebar.php';
         while($row=mysqli_fetch_assoc($result))
         {
       ?>
-                <option value="<?=$row['id']?>"><?=$row['position_name']?></option>
+                <option value="<?=$row['position_id']?>"><?=$row['position_name']?></option>
                 <?php
           }
         ?>
@@ -82,7 +73,7 @@ include 'sidebar.php';
         while($row=mysqli_fetch_assoc($result))
         {
       ?>
-                <option value="<?=$row['id']?>"><?=$row['department_name']?></option>
+                <option value="<?=$row['department_id']?>"><?=$row['department_name']?></option>
                 <?php
       }
     ?>
@@ -92,7 +83,31 @@ include 'sidebar.php';
      }
      }
    ?>
+    </div><br>
+    <label for="text" class="form-label">Access to Ticket*</label><br>
+    <div class="form-check form-check-inline">
+
+        <input class="form-check-input" type="radio" name="brands[]" id="inlineRadio1" value="View">
+
+        <label class="form-check-label" for="inlineRadio1">View</label>
+
     </div>
+
+    <div class="form-check form-check-inline">
+
+        <input class="form-check-input" type="radio" name="brands[]" id="inlineRadio2" value="Edit">
+
+        <label class="form-check-label" for="inlineRadio2">Edit</label>
+
+    </div>
+
+    <div class="form-check form-check-inline">
+
+        <input class="form-check-input" type="radio" name="brands[]" id="inlineRadio2" value="Transfer">
+
+        <label class="form-check-label" for="inlineRadio2">Transfer</label>
+
+    </div> <br><br>
     <button type="submit" name="create" class="btn"
         style="background-color: #044BA9; color:white; width:100px;">Create</button>
     <a href="#" style="font: Noto Sans; color:#044BA9"><u>Discard</u></a>

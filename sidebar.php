@@ -1,23 +1,18 @@
 <?php
-session_start();
  include 'connection.php'; 
  include 'header.php';
  ?>
 
 <head>
-    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <!-- <link rel="stylesheet" href="assets/css/sidebar.css"> -->
 </head>
 
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div style=" text-align: right ;">
-        </div>
         <?php
-       
-       echo  " Welcome ".$_SESSION['user_name'];
-       
-       ?>
+    echo str_repeat('&emsp;',80) .$_SESSION['user_name'];
+    ?>
 
         <div class="header_img">
             <img src="assets/images/nav_image.png" alt="Avatar Logo">
@@ -30,7 +25,7 @@ session_start();
                     <span class="nav_logo-name m-0">
                         <img src="assets/images/logoi.png" height="25px;">
                     </span> </a>
-                <div class="nav_list"> <a href="dashboard_client.php" class="nav_link active"> <i
+                <div class="nav_list"> <a href="dashboard.php" class="nav_link active"> <i
                             class=' bx bxs-dashboard nav_icon'></i>
                         <span class="nav_name">Dashboard</span> </a> <a href="manage_user.php" class="nav_link"> <i
                             class="iconify nav_icon" data-icon="carbon:user-multiple"></i> Manage Users</span></a> <a

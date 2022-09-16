@@ -1,291 +1,302 @@
 <?php
 include 'header.php';
 include 'sidebar.php';
+include 'connection.php';
 ?>
-<div class="row  mt-4 ">
-    <span><b>Welcome Admin,</b></span>
-    <div class="col  h2"><b>Dashboard</b></div>
-    <div class="col ">
-        <div class="box">
-            <i class='  bx bx-search-alt-2'></i>
-            <input type="search" id="form1" class="form-control" placeholder="Search by ID, Department" />
-        </div>
-    </div>
-    &emsp; &emsp; &emsp; &emsp; &emsp;
-    <div class="col  ">
-        <button type="button" class="btn "><i class=' bx bx-plus-circle'></i>Add New User</button>
-    </div>
-</div> <br>
+<title>Dashboard!!</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
-<!-- D Dashboard end -->
-
-<!-- D checkbox row start -->
-<div class="row  mt-2">
-    <div class="col pt-2">
-
-        <div class="form-check form-check-inline">
-            <label class="form-check-label " for="flexCheckChecked">
-                ALL
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-
-        </div>
-
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                OPEN
-            </label>
-        </div>
-
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                HOLD
-            </label>
-        </div>
-
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                CLOSED
-            </label>
-        </div>
-
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                IN PROGRASS
-            </label>
-        </div>
-
-    </div>
-    <div class="col  ">
-        <button type="button" class=" btn1 "><i class=' bx bx-slider'></i> Filter</button>
-    </div>
-</div>
-</div>
+<body id="body-pd">
 
 
-<table class=" table tbl">
+    <div class="row">
 
-    <thead style="color:#777777;">
-        <tr>
-            <th scope="col">TICKET #</th>
-            <th scope="col">DEPARTMENT</th>
-            <th scope="col">ASSIGNIEE NAME</th>
-            <th scope="col">ASSIGNIEE DEPARTMENT</th>
-            <th scope="col">STATUS</th>
-            <th scope="col">ACTION</th>
-        </tr>
-    </thead>
-    <tbody class="t_body">
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
 
-                <div class="dropdown dropstart text-end dot">
+        <div class="col">
 
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
+            <!-- D Dashboard start -->
+            <div class="row  mt-4 ">
+                <span><b>Welcome Admin,</b></span>
+                <div class="col  h2"><b>Dashboard</b></div>
+                <!-- <div class="col ">
+                         <div class="box">
+                        <i class='  bx bx-search-alt-2'></i>
+                        <input id="myInput" type="text" placeholder="Search..">
+                    </div> 
+            </div> -->
 
-                        <i class="bx bx-dots-vertical-rounded "></i>
 
-                    </button>
+            </div> <br>
 
-                    <ul class="dropdown-menu  drop">
+            <!-- D Dashboard end -->
 
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
+            <!-- D checkbox row start -->
+            <form action="dashboard.php" method="POST">
+                <div class="row  mt-2">
+                    <div class="col pt-2">
+                        <div class="check_item">
 
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label " for="flexCheckChecked">
+                                    ALL
+                                </label>
+                                <input class="form-check-input" type="checkbox" value="" name="status[0]"
+                                    id="flexCheckChecked">
 
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
+                            </div>
 
-                    </ul>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="open" name="status[1]"
+                                    id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    OPEN
+                                </label>
+                            </div>
 
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="pending" name="status[2]"
+                                    id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    HOLD
+                                </label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="closed" name="status[3]"
+                                    id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    CLOSED
+                                </label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="in-progress" name="status[4]"
+                                    id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    IN PROGRASS
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col  ">
+                        <button type="submit" name="submit" value="submit" class=" btn1 "><i class=' bx bx-slider'></i>
+                            Filter</button>
+                    </div>
                 </div>
+            </form>
+            <br>
+        </div>
 
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
 
-                <div class="dropdown dropstart text-end dot">
+        <table class="table " id="data" style="margin-top: 15px;
+    padding: 20px;
+    width: 95%;
+    border: #F4FBFF;
+    border-collapse: separate;
+    border-spacing: 0 0.5em;">
 
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
+            <thead style="color:#777777;">
+                <tr>
+                    <th scope="col">TICKET #</th>
+                    <th scope="col">DEPARTMENT</th>
+                    <th scope="col">ASSIGNIEE NAME</th>
+                    <th scope="col">ASSIGNIEE DEPARTMENT</th>
+                    <th scope="col">STATUS</th>
+                    <th scope="col">ACTION</th>
+                </tr>
+            </thead>
+            <tbody class="t_body" id="table_body">
+                <?php
+            if (isset($_POST['submit'])) {
+                if (count($_POST['status']) > 1) {
 
-                        <i class="bx bx-dots-vertical-rounded "></i>
+                    $queryString ="";
 
-                    </button>
+                    $queryString = "status IN ('" . implode("','", $_POST['status']) . "')";
+                }
+                else
+                {
+                foreach ($_POST['status'] as $value) {
 
-                    <ul class="dropdown-menu   drop_list">
+                    
 
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
+                    $queryString = "";
 
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
+                    switch ($value) {
 
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
+                        case 'open':
 
-                    </ul>
+                            $queryString = $queryString . "status ='open'";
 
-                </div>
+                            break;
 
-            </td>
+                        case 'pending':
 
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
+                            $queryString = $queryString . "status ='pending'";
 
-                <div class="dropdown dropstart text-end dot">
+                            break;
 
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
+                        case 'closed':
 
-                        <i class="bx bx-dots-vertical-rounded "></i>
+                            $queryString = $queryString . "status ='closed'";
 
-                    </button>
+                            break;
 
-                    <ul class="dropdown-menu   drop_list">
+                        case 'in-progress':
 
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
+                            $queryString = $queryString . "status ='in-progress'";
 
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
+                            break;
+                            
 
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
+                        default:
 
-                    </ul>
+                            $queryString = $queryString . "status IN ('open', 'pending', 'in-progress','closed')";
 
-                </div>
+                            break;
+                        }
 
-            </td>
+                    }
+                }
+            
+?>
+                <?php
+               
+            
 
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
+$query= "SELECT *
 
-                <div class="dropdown dropstart text-end dot">
+FROM tickets T JOIN users U ON (T.user_id = U.id )
 
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
+JOIN departments D ON (T.department_id = D.department_id ) JOIN issue I ON (T.issue_department = I.issue_id) where $queryString order by ticket_id DESC";
 
-                        <i class="bx bx-dots-vertical-rounded "></i>
+$query_run = mysqli_query($con ,$query);
 
-                    </button>
+if(mysqli_num_rows( $query_run)> 0)
 
-                    <ul class="dropdown-menu   drop_list">
+{
 
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
+    while ($row = mysqli_fetch_assoc($query_run))
 
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
+    {
+        ?>
 
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
+                <tr>
 
-                    </ul>
+                    <td><?php echo $row['ticket_id']; ?></td>
 
-                </div>
+                    <td><?php echo $row['issue_name']; ?></td>
 
-            </td>
+                    <td><?php echo $row['users_name']; ?></td>
 
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
+                    <td><?php echo $row['department_name'];  ?></td>
 
-                <div class="dropdown dropstart text-end dot">
+                    <td><?php echo $row['status']; ?></td>
 
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
 
-                        <i class="bx bx-dots-vertical-rounded "></i>
+                    <td>
+                        <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"> <i
+                                class=' bx bx-show' style="color:blue; font-size:20px; margin-left:5px;"></i>view</a>
+                        &nbsp;
+                        <a class=" " href="#" style="color:gray;"><i class=' bx bx-edit '
+                                style=" color:gray; font-size:20px; margin-left:5px;"></i>edit</a> &nbsp;
+                        <a class=" " href="#" style="color:#7DBA00;"><i class=' bx bx-transfer '
+                                style="color:#7DBA00; font-size:20px; margin-left:5px;"></i>transfer</a>
 
-                    </button>
+                    </td>
+                </tr>
 
-                    <ul class="dropdown-menu   drop_list">
+                <?php
+                        }
 
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
+                    }
 
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
+                    else
+                    {
 
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
+                
+                ?>
+                <tr>
+                    <td colspan="6"> No record found</td>
+                </tr>
+                <?php
+                    }
+            }
+            else
+            {
+                
+                $query= "SELECT *
+                
+                FROM tickets T JOIN users U ON (T.user_id = U.id )
+                
+                JOIN departments D ON (T.department_id = D.department_id ) JOIN issue I ON (T.issue_department = I.issue_id) ORDER BY ticket_id DESC" ;
+                
+                $query_run = mysqli_query($con ,$query);
+                
+                if(mysqli_num_rows( $query_run)> 0)
+                
+                {
+                
+                    while ($row = mysqli_fetch_assoc($query_run))
+                
+                    {
+                        ?>
 
-                    </ul>
+                <tr>
 
-                </div>
+                    <td><?php echo $row['ticket_id']; ?></td>
 
-            </td>
+                    <td><?php echo $row['issue_name']; ?></td>
 
-        </tr>
-        <tr>
-            <th scope="row">#2345</th>
-            <td>Sales</td>
-            <td>John Deo</td>
-            <td>Sales Executive</td>
-            <td>open</td>
-            <td>
+                    <td><?php echo $row['users_name']; ?></td>
 
-                <div class="dropdown dropstart text-end dot">
+                    <td><?php echo $row['department_name'];  ?></td>
 
-                    <button type="button" class="dot" data-bs-toggle="dropdown">
+                    <td><?php echo $row['status']; ?></td>
 
-                        <i class="bx bx-dots-vertical-rounded "></i>
 
-                    </button>
+                    <td>
+                        <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"> <i
+                                class=' bx bx-show' style="color:blue; font-size:20px; margin-left:5px;"></i>view</a>
+                        &nbsp;
+                        <a class=" " href="#" style="color:gray;"><i class=' bx bx-edit '
+                                style=" color:gray; font-size:20px; margin-left:5px;"></i>edit</a> &nbsp;
+                        <a class=" " href="#" style="color:#7DBA00;"><i class=' bx bx-transfer '
+                                style="color:#7DBA00; font-size:20px; margin-left:5px;"></i>transfer</a>
 
-                    <ul class="dropdown-menu   drop_list">
+                    </td>
+                </tr>
 
-                        <li><a class="dropdown-item active" href="#">View<i style="margin-left:100px;"
-                                    class=' bx bx-show'></i></a></li>
+                <?php
+                                        }
+                
+                                    }
+                
+                                    else
+                                    {
+                
+                                
+                                ?>
+                <tr>
+                    <td colspan="6"> No record found</td>
+                </tr>
+                <?php
+                                    }
+                                
+                                
+                }
+                ?>
 
-                        <li><a class="dropdown-item " href="#">Edit<i style="margin-left:110px;"
-                                    class='bx bx-pencil'></i></a></li>
-
-                        <li><a class="dropdown-item " href="#">Transfer<i style="margin-left:80px;"
-                                    class='  bx bx-transfer'></i></a></li>
-
-                    </ul>
-
-                </div>
-
-            </td>
-        </tr>
-
-    </tbody>
-</table>
+            </tbody>
+        </table>
 
 </body>
+<br>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<script>
+$(document).ready(function() {
+    $('#data').DataTable();
+});
+</script>
 
 </html>

@@ -7,7 +7,8 @@ session_start();
 session_unset();
 
 session_destroy();
+$_SESSION['is_user_login'] =='no';
 
-header("Location: http://localhost/ticket_support_system/index.php");
+header("Location:index.php");
 
 ?>
