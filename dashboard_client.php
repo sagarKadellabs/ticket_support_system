@@ -55,7 +55,7 @@ include 'connection.php';
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="pending" name="status[2]"
+                                <input class="form-check-input" type="checkbox" value="hold" name="status[2]"
                                     id="flexCheckChecked">
                                 <label class="form-check-label" for="flexCheckChecked">
                                     HOLD
@@ -131,9 +131,9 @@ include 'connection.php';
 
                             break;
 
-                        case 'pending':
+                        case 'hold':
 
-                            $queryString = $queryString . "status ='pending'";
+                            $queryString = $queryString . "status ='hold'";
 
                             break;
 
