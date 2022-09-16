@@ -1,11 +1,9 @@
 <?php
 include 'header.php';
 include 'sidebar.php';
+include 'connection.php';
 ?>
-<?php
-//$sql = "UPDATE users set id= ".$_GET['user_id'];
-//mysqli_query($con, $sql);
-//?>
+
 <form action="create_client_submit.php" method="post" style="padding:10px; margin-top:100px; margin-left:auto;">
     <h1>Create Client</h1>
     <div class="row mb-3 mt-3">
@@ -30,18 +28,16 @@ include 'sidebar.php';
         $role2 = mysqli_query($con,"select * from roles where role_id='2'");
   if(mysqli_num_rows($role2) > 0)
   {
-      $role_name2 = mysqli_fetch_assoc($role2);
-      $_SESSION['role_name'] = $role_name2["roles_name"];
-      
+      $role_name2 = mysqli_fetch_assoc($role2); 
   }?>
         <div class="col ">
 
             <label for="role" class="form-label">roles*</label>
 
             <input type="text" name="role" class="form-control form-control-lg form-boxes" value=<?php 
-echo $_SESSION['role_name']; ?> readonly>
+echo $role_name2['roles_name']; ?> readonly>
             <input type="hidden" name="role" class="form-control form-control-lg form-boxes" value=<?php 
-echo $_SESSION['roles_id']; ?>>
+echo $role_name2['role_id']; ?>>
 
         </div>
 
@@ -116,7 +112,7 @@ echo $_SESSION['roles_id']; ?>>
         <label class="form-check-label" for="inlineRadio2">Transfer</label>
 
     </div> <br><br>
-    <button type="submit" name="create" class="btn"
+    <button type="submit" name="create" value="create" class="btn"
         style="background-color: #044BA9; color:white; width:100px;">Create</button>
     <a href="#" style="font: Noto Sans; color:#044BA9"><u>Discard</u></a>
 </form>
