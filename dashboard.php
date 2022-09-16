@@ -54,7 +54,7 @@ include 'connection.php';
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="pending" name="status[2]"
+                                <input class="form-check-input" type="checkbox" value="hold" name="status[2]"
                                     id="flexCheckChecked">
                                 <label class="form-check-label" for="flexCheckChecked">
                                     HOLD
@@ -73,7 +73,7 @@ include 'connection.php';
                                 <input class="form-check-input" type="checkbox" value="in-progress" name="status[4]"
                                     id="flexCheckChecked">
                                 <label class="form-check-label" for="flexCheckChecked">
-                                    IN PROGRASS
+                                    IN PROGRESS
                                 </label>
                             </div>
                         </div>
@@ -130,9 +130,9 @@ include 'connection.php';
 
                             break;
 
-                        case 'pending':
+                        case 'hold':
 
-                            $queryString = $queryString . "status ='pending'";
+                            $queryString = $queryString . "status ='hold'";
 
                             break;
 
@@ -198,8 +198,9 @@ if(mysqli_num_rows( $query_run)> 0)
                         <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"> <i
                                 class=' bx bx-show' style="color:blue; font-size:20px; margin-left:5px;"></i>view</a>
                         &nbsp;
-                        <a class=" " href="#" style="color:gray;"><i class=' bx bx-edit '
-                                style=" color:gray; font-size:20px; margin-left:5px;"></i>edit</a> &nbsp;
+                        <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>" style="color:gray;"><i
+                                class=' bx bx-edit '
+                                style="color:gray; font-size:20px; margin-left:5px;"></i>Edit</a>&nbsp;
                         <a class=" " href="ticket_detail.php?ticket_id=<?= $row['ticket_id']; ?>"
                             style="color:#7DBA00;"><i class=' bx bx-transfer '
                                 style="color:#7DBA00; font-size:20px; margin-left:5px;"></i>transfer</a>
