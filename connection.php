@@ -1,3 +1,3 @@
 <?php
-$con = mysqli_connect('localhost','root','','ticket_management_system') or die('connection failed!');
+$con = mysqli_connect('localhost','root','Root4@pass','ticket_support_system') or die('connection failed!');
 ?>
