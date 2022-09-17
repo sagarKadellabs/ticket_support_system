@@ -27,14 +27,21 @@ include 'connection.php';
             <input type="password" class="form-control form-boxes" placeholder=" Password" id="password" name="password"
                 required>
         </div>
+        <?php
+        $role1 = mysqli_query($con,"select * from roles where role_id='3'");
+        if(mysqli_num_rows($role1) > 0)
+        {
+            $role_name1 = mysqli_fetch_assoc($role1);
+        }
+        ?>
         <div class="col ">
 
             <label for="role" class="form-label">roles*</label>
 
             <input type="text" name="role" class="form-control form-control-lg form-boxes" value=<?php 
-echo $_SESSION['roles_name']; ?> readonly>
+echo $role_name1['roles_name']; ?> readonly>
             <input type="hidden" name="role" class="form-control form-control-lg form-boxes" value=<?php 
-echo $_SESSION['role_id']; ?>>
+echo $role_name1['role_id']; ?>>
 
         </div>
 
