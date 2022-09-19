@@ -12,8 +12,6 @@ if(isset($_POST['create']))
  $role = $_POST['role'];
  $dep = $_POST['dep'];
  $message = "<H1>Hi, ".$users_name." Your password is ".$password."</H1>";
- 
-
  $query=mysqli_query($con,"select * from `users` where emails = '$emails'"); 
  if(mysqli_num_rows($query)>0)
  {

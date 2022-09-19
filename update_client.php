@@ -84,13 +84,19 @@ $result = mysqli_fetch_assoc($query_run);
         </div>
     </div>
     <div class="row  mt-3">
-
+        <?php
+        $role11 = mysqli_query($con,"select * from roles where role_id='2'");
+        if(mysqli_num_rows($role11) > 0)
+        {
+            $role_name11 = mysqli_fetch_assoc($role11);
+        }
+        ?>
         <div class="col ">
 
             <label for="role" class="form-label">roles*</label>
 
             <input type="text" name="role" class="form-control form-control-lg form-boxes" value=<?php 
-echo $_SESSION['role_name']; ?> readonly>
+echo $role_name11['roles_name']; ?> readonly>
         </div>
     </div>
     <br>
