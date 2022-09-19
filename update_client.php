@@ -13,7 +13,7 @@ $result = mysqli_fetch_assoc($query_run);
 //echo "<pre>"; print_r($result); exit;  
 ?>
 <form action="" method="POST" style="padding:10px; margin-top:100px; margin-left:auto;">
-    <h1>Updated End User</h1>
+    <h1>Updated Client</h1>
 
     <div class="row mb-3 mt-3">
         <div class="col">
