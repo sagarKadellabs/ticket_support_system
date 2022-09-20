@@ -123,28 +123,13 @@ if(isset($_POST['login']))
     $_SESSION['user_name'] = $uname;
     $_SESSION['user_id']= $row["id"];
     $_SESSION['department_id'] = $row["department_id"];
-
+    
 
     $department = mysqli_query($con,"select department_name from departments where department_id = ".$row['department_id']);
     if(mysqli_num_rows($department) > 0)
     {
         $dept_name = mysqli_fetch_assoc($department);
         $_SESSION['department_name'] = $dept_name['department_name'];
-    }
-    $role = mysqli_query($con,"select * from roles where role_id='3'");
-    if(mysqli_num_rows($role) > 0)
-    {
-        $role_name = mysqli_fetch_assoc($role);
-        $_SESSION['roles_name'] = $role_name["roles_name"];
-        $_SESSION['role_id'] = $role_name["role_id"];
-
-    }
-    $role = mysqli_query($con,"select * from roles where role_id='2'");
-    if(mysqli_num_rows($role) > 0)
-    {
-        $role_name = mysqli_fetch_assoc($role);
-        $_SESSION['role_name'] = $role_name["roles_name"];
-        $_SESSION['roles_id'] = $role_name["role_id"];
     }
     if($row["role_id"]==1)
     {   
@@ -162,7 +147,7 @@ if(isset($_POST['login']))
 }
   else
   { 
-   echo"<script> window.location='index.php'; alert('oops! invalid crediantial')</script>";
+   echo"<script> window.location='index.php'; alert('oops! invalid credential')</script>";
   }
 }
 ?>
