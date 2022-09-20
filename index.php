@@ -147,7 +147,7 @@ if(isset($_POST['login']))
 }
   else
   { 
-   echo"<script> window.location='index.php'; alert('oops! invalid crediantial')</script>";
+   echo"<script> window.location='index.php'; alert('oops! invalid credential')</script>";
   }
 }
 ?>
