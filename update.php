@@ -109,7 +109,7 @@ echo $role_name11['roles_name']; ?> readonly>
 
 </form>
 <?php
-if($_POST['submit'])
+if(isset($_POST['submit']))
 {
     
     $users_name =$_POST['users_name'];
