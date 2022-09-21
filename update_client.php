@@ -116,8 +116,8 @@ if(isset($_POST['submit']))
      $pos =$_POST['pos'];
      $dep =$_POST['dep'];
 
-$query ="UPDATE USERS SET  users_name=' $users_name', emails='$emails',position_id='$pos', department_id='$dep' where id='$id'"; 
-    $data = mysqli_query($con,$query);
+$query1 ="UPDATE USERS SET  users_name=' $users_name', emails='$emails',position_id='$pos', department_id='$dep' where id='$id'"; 
+    $data = mysqli_query($con,$query1);
     if($data)
     {
         echo "<script>window.location='manage_client.php';alert('Record Updated')</script>";
