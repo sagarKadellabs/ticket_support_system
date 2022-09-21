@@ -116,7 +116,7 @@ if(isset($_POST['submit']))
      $pos =$_POST['pos'];
      $dep =$_POST['dep'];
 
-$query1 ="UPDATE USERS SET  users_name=' $users_name', emails='$emails',position_id='$pos', department_id='$dep' where id='$id'"; 
+$query1 ="UPDATE users SET  users_name=' $users_name', emails='$emails',position_id='$pos', department_id='$dep' where id='$id'"; 
     $data = mysqli_query($con,$query1);
     if($data)
     {
