@@ -151,7 +151,7 @@ include 'connection.php';
 
                         default:
 
-                            $queryString = $queryString . "status IN ('open', 'pending', 'in-progress','closed')";
+                            $queryString = $queryString . "status IN ('open', 'hold', 'in-progress','closed')";
 
                             break;
                         }
