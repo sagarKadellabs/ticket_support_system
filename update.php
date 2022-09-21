@@ -109,7 +109,7 @@ echo $role_name11['roles_name']; ?> readonly>
 
 </form>
 <?php
-if($_POST['submit'])
+if(isset($_POST['submit']))
 {
     
     $users_name =$_POST['users_name'];
@@ -117,8 +117,8 @@ if($_POST['submit'])
      $pos =$_POST['pos'];
      $dep =$_POST['dep'];
 
-$query ="UPDATE USERS SET  users_name=' $users_name', emails='$emails',position_id='$pos', department_id='$dep' where id='$id'"; 
-    $data = mysqli_query($con,$query);
+$query2 ="UPDATE USERS SET  users_name=' $users_name', emails='$emails',position_id='$pos', department_id='$dep' where id='$id'"; 
+    $data = mysqli_query($con,$query2);
     if($data)
     {
         echo "<script>window.location='manage_user.php';alert('Record Updated')</script>";
